@@ -1,0 +1,53 @@
+1. What kind of relationship are you looking for?
+    a: A romantic relationship
+    b: A friendship
+    c: A hook up
+2. What is your sign?
+    a: Aries
+    b: Taurus
+    c: Gemini
+    d: Cancer
+    e: Leo
+    f: Virgo
+    g: Libra
+    h: Scorpio
+    i: Sagittarius
+    j: Capricorn
+    k: Aquarius
+    l: Pisces
+3. If you ordered a pizza, what would you get as toppings?
+    a: All meat
+    b: Cheese, plain and simple
+    c: Pineapple
+4. What is your love language?
+    a: Physical Touch
+    b: Words of Affirmation
+    c: Acts of Service
+    d: Gift Giving
+    e: Quality Time
+5. What kind of music do you listen to?
+    a: Whatever's on the radio
+    b: Rap
+    c: Indie
+6. You get caught cheating on a test. What do you do when your professor confronts you?
+    a: Cry and beg your professor to forgive you
+    b: Try to pass the blame
+    c: Deny it
+7. If you were a candle, what scent would you be?
+    a: Ocean Breeze
+    b: Hardwood
+    c: Spiced Chai
+    d: New Car
+8. What app do you spend the most time on?
+    a: Bloom duh
+    b: Instagram
+    c: Snapchat
+    d: Text Messages
+9. You're out at a party, what are you drinking?
+    a: Water
+    b: Whatever was in that large 'fruit punch' bowl
+    c: Straight Liquor
+10. Would you ever become a sugar baby to pay off your student loans?
+    a: Of course!
+    b: Never
+    c: I already am
