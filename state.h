@@ -6,13 +6,14 @@ using namespace std;
 
 class State{
     int percentMatch, age;
-    string name, bio;
+    string name, bio, popUpText;
     char showPopUp;
 
     public:
     char getPopUp(){return showPopUp;}
     int getPercentMatch(){return percentMatch;}
     int getAge(){return age;}
+    string getPopUpText(){return popUpText;}
     string getName(){return name;}
     string getBio(){return bio;}
     void read_from(const char *mem);
