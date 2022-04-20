@@ -7,10 +7,10 @@ using namespace std;
 class State{
     int percentMatch, age;
     string theirName, yourName, bio;
-    bool showPopUp;
+    char showPopUp;
 
     public:
-    bool getPopUp(){return showPopUp;}
+    char getPopUp(){return showPopUp;}
     int getPercentMatch(){return percentMatch;}
     int getAge(){return age;}
     string getYourName(){return yourName;}
@@ -18,6 +18,7 @@ class State{
     string getBio(){return bio;}
     void read_from(const char *mem);
     void write_to(char *mem);
+    void display();
 };
 
 #endif
