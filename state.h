@@ -6,12 +6,15 @@ using namespace std;
 
 class State{
     int percentMatch, age;
-    string name, bio;
+    string theirName, yourName, bio;
+    bool showPopUp;
 
     public:
+    bool getPopUp(){return showPopUp;}
     int getPercentMatch(){return percentMatch;}
     int getAge(){return age;}
-    string getName(){return name;}
+    string getYourName(){return yourName;}
+    string getTheirName(){return theirName;}
     string getBio(){return bio;}
     void read_from(const char *mem);
     void write_to(char *mem);
