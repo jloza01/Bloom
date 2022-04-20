@@ -13,7 +13,7 @@ class State{
     char getPopUp(){return showPopUp;}
     int getPercentMatch(){return percentMatch;}
     int getAge(){return age;}
-    string getTheirName(){return name;}
+    string getName(){return name;}
     string getBio(){return bio;}
     void read_from(const char *mem);
     void write_to(char *mem);
