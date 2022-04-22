@@ -10,7 +10,7 @@ class State{
     char showPopUp;
 
     public:
-    char getPopUp(){return showPopUp;}
+    char getShowPopUp(){return showPopUp;}
     int getPercentMatch(){return percentMatch;}
     int getAge(){return age;}
     int getnumMatches(){return numMatches;}

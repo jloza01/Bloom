@@ -43,7 +43,7 @@
                         top: 25
                         left: -20
             - Image:
-                source: https://img.buzzfeed.com/buzzfeed-static/static/2015-05/20/13/campaign_images/webdr01/what-your-favorite-stock-photo-spaghetti-person-s-2-7471-1432142821-2_dblbig.jpg
+                source: {profilePic}
                 style:
                   width: 55
                   height: 55
@@ -73,7 +73,7 @@
                   backgroundColor: white
                   borderRadius: 100
 - Image:
-    source: https://previews.123rf.com/images/kurhan/kurhan1103/kurhan110300100/9050894-hombre-feliz.jpg
+    source: {theirPic}
     style:
       backgroundColor: transparent
       width: 320
