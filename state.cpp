@@ -4,6 +4,8 @@ using namespace std;
 #include"/usr/local/cs/cs251/show_mem.h"
 
 void State::read_from(const char *mem){
+    pageTitle = _get_tilde_terminated_string(mem);
+    mem += (pageTitle.size() + 1);
     showPopUp = _get_char(mem, 1);
     mem += 1;
     popUpText = _get_tilde_terminated_string(mem);
@@ -19,6 +21,8 @@ void State::read_from(const char *mem){
 }
 
 void State::write_to(char *mem){
+    _put_tilde_terminated_string(pageTitle, mem);
+    mem += (pageTitle.size() + 1);
     _put_char(showPopUp, mem);
     mem += 1;
     _put_tilde_terminated_string(popUpText, mem);
@@ -31,8 +35,4 @@ void State::write_to(char *mem){
     mem += (bio.size() + 1);
     _put_int(percentMatch, mem, 2);
     mem += 2;
-}
-
-void State::display(){
-
 }

@@ -6,7 +6,7 @@ using namespace std;
 
 class State{
     int percentMatch, age, numMatches;
-    string name, bio, popUpText;
+    string name, bio, popUpText, pageTitle;
     char showPopUp;
 
     public:
@@ -14,6 +14,7 @@ class State{
     int getPercentMatch(){return percentMatch;}
     int getAge(){return age;}
     int getnumMatches(){return numMatches;}
+    string getPageTitle(){return pageTitle;}
     string getPopUpText(){return popUpText;}
     string getName(){return name;}
     string getBio(){return bio;}
