@@ -10,17 +10,19 @@ class State{
     char showPopUp;
 
     public:
-    char getShowPopUp(){return showPopUp;}
-    int getPercentMatch(){return percentMatch;}
-    int getAge(){return age;}
-    int getnumMatches(){return numMatches;}
-    string getPageTitle(){return pageTitle;}
-    string getPopUpText(){return popUpText;}
-    string getName(){return name;}
-    string getBio(){return bio;}
+    char getShowPopUp() const {return showPopUp;}
+    int getPercentMatch() const {return percentMatch;}
+    int getAge() const{return age;}
+    int getnumMatches() const {return numMatches;}
+    string getPageTitle() const {return pageTitle;}
+    string getPopUpText()const{return popUpText;}
+    string getName() const{return name;}
+    string getBio() const{return bio;}
     void read_from(const char *mem);
     void write_to(char *mem);
-    void display();
 };
+
+
+void display(const State &state);
 
 #endif
