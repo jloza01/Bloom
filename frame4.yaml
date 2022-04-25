@@ -1,0 +1,308 @@
+- View:
+    style:
+      width: 320
+      backgroundColor: white
+    children:
+      - View:
+          style:
+            width: 320
+            height: 80
+            backgroundColor: rgb(174, 186, 255)
+            borderBottomWidth: 1.5
+            borderBottomColor: rgb(100, 100, 100)
+          children:
+            - Button:
+                style:
+                  width: 0
+                  height: 0
+                  borderLeftWidth: 20
+                  borderRightWidth: 0
+                  borderBottomWidth: 25
+                  borderStyle: 'solid'
+                  backgroundColor: transparent
+                  borderBottomColor: white
+                  borderLeftColor: transparent
+                  borderRightColor: transparent
+                  position: absolute
+                  top: 12
+                  left: 3
+                children:
+                  - Button:
+                      style:
+                        width: 0
+                        height: 0
+                        borderLeftWidth: 0
+                        borderRightWidth: 20
+                        borderBottomWidth: 25
+                        borderStyle: 'solid'
+                        backgroundColor: transparent
+                        borderBottomColor: transparent
+                        borderLeftColor: transparent
+                        borderRightColor: white
+                        position: absolute
+                        top: 25
+                        left: -20
+            - Button:
+                style:
+                  width: 55
+                  height: 55
+                  backgroundColor: white
+                  borderRadius: 100
+                  borderWidth: 1
+                  borderColor: rgb(160, 160, 160)
+                  position: absolute
+                  top: 5
+                  left: 135
+            - Text:
+                style:
+                  color: white
+                  fontSize: 15
+                  position: absolute
+                  top: 57
+                  left: 148
+                index: 0
+            - Button:
+                style:
+                  width: 7
+                  height: 7
+                  backgroundColor: white
+                  borderRadius: 100
+                  position: absolute
+                  top: 20
+                  left: 300        
+            - Button:
+                style:
+                  width: 7
+                  height: 7
+                  backgroundColor: white
+                  borderRadius: 100
+                  position: absolute
+                  top: 40
+                  left: 300  
+            - Button:
+                style:
+                  width: 7
+                  height: 7
+                  backgroundColor: white
+                  borderRadius: 100
+                  position: absolute
+                  top: 60
+                  left: 300
+      - ScrollView:
+          style:
+            width: 320
+            backgroundColor: transparent
+          children:
+            - Button:
+                style:
+                  width: 320
+                  height: 55
+                  backgroundColor: white
+                children:      
+                  - Button:      
+                      style:
+                        width: 160
+                        height: 40
+                        borderRadius: 40
+                        backgroundColor: rgb(160, 160, 160)
+                        position: absolute
+                        top: 9 
+                      children:
+                        - Text:
+                            style:
+                              color: white
+                              fontsize: 15
+                              position: absolute
+                              top: 10
+                              left: 15
+                            index: 5
+            - Button:
+                style:
+                  width: 320
+                  height: 50
+                  backgroundColor: white
+                children:      
+                  - Button:      
+                      style:
+                        width: 125
+                        height: 40
+                        borderRadius: 40
+                        backgroundColor: rgb(174, 186, 255)
+                        position: absolute
+                        left: 195 
+                      children:
+                        - Text:
+                            style:
+                              color: white
+                              fontsize: 15
+                              position: absolute
+                              top: 10
+                              left: 15
+                            index: 24
+            - Button:
+                style:
+                  width: 320
+                  height: 50
+                  backgroundColor: white
+                children:      
+                  - Button:      
+                      style:
+                        width: 160
+                        height: 40
+                        borderRadius: 40
+                        backgroundColor: rgb(160, 160, 160)
+                        position: absolute
+                        top: 
+                      children:
+                        - Text:
+                            style:
+                              color: white
+                              fontsize: 15
+                              position: absolute
+                              top: 10
+                              left: 15
+                            index: 5
+            - Button:
+                style:
+                  width: 320
+                  height: 50
+                  backgroundColor: white
+                children:      
+                  - Button:      
+                      style:
+                        width: 125
+                        height: 40
+                        borderRadius: 40
+                        backgroundColor: rgb(174, 186, 255)
+                        position: absolute
+                        left: 195 
+                      children:
+                        - Text:
+                            style:
+                              color: white
+                              fontsize: 15
+                              position: absolute
+                              top: 10
+                              left: 15
+                            index: 24
+            - Button:
+                style:
+                  width: 320
+                  height: 50
+                  backgroundColor: white
+                children:      
+                  - Button:      
+                      style:
+                        width: 125
+                        height: 40
+                        borderRadius: 40
+                        backgroundColor: rgb(174, 186, 255)
+                        position: absolute
+                        left: 195 
+                      children:
+                        - Text:
+                            style:
+                              color: white
+                              fontsize: 15
+                              position: absolute
+                              top: 10
+                              left: 15
+                            index: 24
+            - Button:
+                style:
+                  width: 320
+                  height: 50
+                  backgroundColor: white
+                children:      
+                  - Button:      
+                      style:
+                        width: 160
+                        height: 40
+                        borderRadius: 40
+                        backgroundColor: rgb(160, 160, 160)
+                        position: absolute
+                        top: 
+                      children:
+                        - Text:
+                            style:
+                              color: white
+                              fontsize: 15
+                              position: absolute
+                              top: 10
+                              left: 15
+                            index: 5
+          
+            - Button:
+                style:
+                  width: 320
+                  height: 50
+                  backgroundColor: white
+                children:      
+                  - Button:      
+                      style:
+                        width: 125
+                        height: 40
+                        borderRadius: 40
+                        backgroundColor: rgb(174, 186, 255)
+                        position: absolute
+                        left: 195 
+                      children:
+                        - Text:
+                            style:
+                              color: white
+                              fontsize: 15
+                              position: absolute
+                              top: 10
+                              left: 15
+                            index: 24
+      - View:
+          style:
+            width: 320
+            height: 35
+            backgroundColor: white
+            borderTopWidth: 1
+            borderBottomColor: rgb(190, 190, 190)
+          children:
+            - Button:
+                style:
+                  width: 30
+                  height: 20
+                  borderRadius: 4
+                  backgroundColor: rgb(174, 186, 255)
+                  position: absolute
+                  top: 20%
+                  left: 9
+                children:
+                  - Button:
+                      style:
+                        width: 12
+                        height: 20
+                        borderRadius: 3
+                        position: absolute
+                        backgroundColor: rgb(174, 186, 255)
+                        top: -4
+                        left: 9
+                  - Button:
+                      style:
+                        width: 10
+                        height: 10
+                        borderRadius: 100
+                        position: absolute
+                        backgroundColor: white
+                        top: 4
+                        left: 10
+            - TextInput:
+                index: 38
+                len: 40
+                style:
+                  width: 260
+                  height: 20
+                  borderRadius: 10
+                  borderWidth: 1
+                  position: absolute
+                  top: 20%
+                  left: 55
+                  fontSize: 15
+                  color: rgb(200, 200, 200)
+                  backgroundColor: 'white'
+                  borderColor: rgb(160, 160, 160)
