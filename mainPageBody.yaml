@@ -1,5 +1,5 @@
 - Image:
-    source: https://previews.123rf.com/images/kurhan/kurhan1103/kurhan110300100/9050894-hombre-feliz.jpg
+    source: {othersPic}
     style:
       backgroundColor: transparent
       width: 320
@@ -21,7 +21,7 @@
             height: 70
             borderWidth: 1
             borderColor: black
-            top: 170
+            top: 250
           children:
             - Text:
                 style:
@@ -40,7 +40,7 @@
             height: 70
             borderWidth: 1
             borderColor: black
-            top: 170
+            top: 250
           children:
             - Text:
                 style:
@@ -54,7 +54,7 @@
       height: 80
       borderWidth: 1
       borderColor: black
-      top: 250
+      top: 330
     children:
       - Text:
           style:
