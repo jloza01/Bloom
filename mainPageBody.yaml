@@ -21,7 +21,7 @@
             height: 70
             borderWidth: 1
             borderColor: black
-            top: 250
+            top: 170
           children:
             - Text:
                 style:
@@ -40,7 +40,8 @@
             height: 70
             borderWidth: 1
             borderColor: black
-            top: 250
+            top: 170
+            left: -745
           children:
             - Text:
                 style:
@@ -54,7 +55,7 @@
       height: 80
       borderWidth: 1
       borderColor: black
-      top: 330
+      top: 250
     children:
       - Text:
           style:

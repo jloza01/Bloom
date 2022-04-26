@@ -44,6 +44,7 @@
                         left: -20
             - Image:
                 source: {picType}
+                style:
                   width: 55
                   height: 55
                   backgroundColor: white
