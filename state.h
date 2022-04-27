@@ -5,7 +5,8 @@
 using namespace std;
 
 class State{
-    int percentMatch, age, numMatches, numFields;
+    Account &potmatch;
+    int percentMatch, numFields;
     string name, bio;
     char showPopUp, pageTitle, popUpText;
 
