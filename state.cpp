@@ -52,7 +52,6 @@ int State::offsetOf(int index) const{
         if(index == i){
             return offset;
         }
-
     }
 }
 
