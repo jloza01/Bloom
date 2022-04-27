@@ -27,12 +27,12 @@
                 style:
                   color: rgb(74, 74, 74)
                   fontSize: 20
-                index: 13
+                index: {nameIndex}
             - Text:
                 style:
                   color: rgb(74, 74, 74)
                   fontSize: 20
-                index: 27
+                index: {ageIndex}
       - View:
           style:
             backgroundColor: transparent
