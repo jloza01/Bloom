@@ -5,7 +5,7 @@
 using namespace std;
 
 class State{
-    int percentMatch, age, numMatches;
+    int percentMatch, age, numMatches, numFields;
     string name, bio, popUpText, pageTitle;
     char showPopUp;
 
@@ -14,6 +14,7 @@ class State{
     int getPercentMatch() const {return percentMatch;}
     int getAge() const{return age;}
     int getnumMatches() const {return numMatches;}
+    int offsetOf(int index) const;
     string getPageTitle() const {return pageTitle;}
     string getPopUpText()const{return popUpText;}
     string getName() const{return name;}
