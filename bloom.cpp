@@ -64,19 +64,19 @@ void Account::set_day(int d){
 void Account::set_year(int y){
     year = y;
 }
-void Account::add_match(Account &user,int numMatches){
-    numMatches=+1;
-    Account **temp = new Account*[numMatches];
-    if(numMatches < 1 ){
-    for (int i = 0; i<numMatches-1; i++){
+void Account::add_match(Account &user){
+    numMtchs = user.get_numMatches() + 1;
+    Account **temp = new Account*[numMtchs];
+    if(numMtchs < 2 ){
+    for (int i = 0; i<numMtchs-1; i++){
         matches[i] = temp[i];
     }
     }
-    temp[numMatches] = &user;
-    matches = new Account*[numMatches];
+    temp[numMtchs] = &user;
+    matches = new Account*[numMtchs];
     delete[] matches;
-    matches = new Account*[numMatches];
-    for (int i = 0; i<numMatches; i++){
+    matches = new Account*[numMtchs];
+    for (int i = 0; i<numMtchs; i++){
         matches[i] = temp[i];
     }
     delete [] temp;
