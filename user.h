@@ -13,12 +13,27 @@ class Account{
     string firstName;
     string lastName;
     string pronouns;
-    Account **matches=0;
+    Account **matches;
     int numMatches;
     int month;
     int day;
     int year;
     int age;
+
+    Account(string eml, string pwd){
+      set_email(eml);
+      set_password(pwd);
+      set_bio("");
+      set_firstName("");
+      set_lastName("");
+      matches = 0;
+      numMatches = 0;
+      set_month(0);
+      set_prounouns("");
+      set_year("");
+      set_day("");
+      set_age("");
+    }
 
   public:
     string get_email();
