@@ -1,0 +1,34 @@
+- View:
+    style:
+      flex: 0
+      flexDirection: row
+      justifyContent: space-between
+    children:
+      - Button:
+          style:
+            backgroundColor: rgb(124, 214, 136)
+            width: 106
+            height: 50
+            borderRadius: 30
+            top: 420
+          children:
+            - Text:
+                style:
+                  color: blue
+                  fontSize: 20
+                index: 
+      - Button:
+          style:
+            backgroundColor: rgb(255, 184, 230)
+            width: 106
+            height: 50
+            borderRadius: 30
+            top: 420
+      - Button:
+          style:
+            backgroundColor: rgb(207, 27, 27)
+            width: 100
+            height: 50
+            borderRadius: 30
+            top: 420
+            

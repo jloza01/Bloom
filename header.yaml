@@ -1,0 +1,74 @@
+- View:
+    style:
+      width: 320
+      backgroundColor: white
+    children:
+      - View:
+          style:
+            width: 320
+            height: 80
+            backgroundColor: rgb(174, 186, 255)
+            borderBottomWidth: 1.5
+            borderBottomColor: rgb(100, 100, 100)
+          children:
+            - Button:
+                style:
+                  width: 0
+                  height: 0
+                  borderLeftWidth: 20
+                  borderRightWidth: 0
+                  borderBottomWidth: 25
+                  borderStyle: 'solid'
+                  backgroundColor: transparent
+                  borderBottomColor: white
+                  borderLeftColor: transparent
+                  borderRightColor: transparent
+                  position: absolute
+                  top: 12
+                  left: 3
+                children:
+                  - Button:
+                      style:
+                        width: 0
+                        height: 0
+                        borderLeftWidth: 0
+                        borderRightWidth: 20
+                        borderBottomWidth: 25
+                        borderStyle: 'solid'
+                        backgroundColor: transparent
+                        borderBottomColor: transparent
+                        borderLeftColor: transparent
+                        borderRightColor: white
+                        position: absolute
+                        top: 25
+                        left: -20
+            - Image:
+                source: {picType}
+                style:
+                  width: 55
+                  height: 55
+                  backgroundColor: white
+                  borderRadius: 100
+                  borderWidth: 1
+                  borderColor: rgb(160, 160, 160)
+                  position: absolute
+                  top: 5
+                  left: 135
+            - Text:
+                style:
+                  color: white
+                  fontSize: 15
+                  position: absolute
+                  top: 57
+                  left: 125
+                index: 0
+            - Image:
+                source: https://e1.pngegg.com/pngimages/767/1013/png-clipart-button-ui-alternative-system-folders-settings-icon.png
+                style:
+                  width: 55
+                  height: 55
+                  position: absolute
+                  top: 5.75
+                  left: 255
+                  backgroundColor: white
+                  borderRadius: 100
