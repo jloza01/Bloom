@@ -1,9 +1,9 @@
 #include<iostream>
 #include<fstream>
 #include<cassert>
-using namespace std;
 #include"/usr/local/cs/cs251/react.h"
 #include"state.h"
+using namespace std;
 
 State state;
 
