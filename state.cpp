@@ -5,7 +5,7 @@ using namespace std;
 
 void State::read_from(const char *mem){
     numFields = 0;
-    pageTitle = _get_char(mem);
+    pageTitle = _get_char(mem, 1);
     mem += 1;
 
     showPopUp = _get_char(mem, 1);
@@ -28,7 +28,7 @@ void State::read_from(const char *mem){
 }
 
 void State::write_to(char *mem){
-    _put_char(pageTitle, mem);
+    _put_char(pageTitle, mem, 1);
     mem += 1;
 
     _put_char(showPopUp, mem, 1);
@@ -50,13 +50,19 @@ void State::write_to(char *mem){
     mem += (bio.size() + 1);
 }
 
-int state::offset(string text){
+
+//Problems I need to fix still: 
+//  text in header in reading from frame1.txt and not labels.txt
+//  pageTitle is not being read in (is anything being read in correctly?)
+//  fix the indexing of all text for yaml files
+
+int State::offset(string text) const{
     int offset = 0;
 
     if(text == "popUpText"){
         offset = 6;
     }else if(text == "name"){
-        offSet = 6 + (popUpText.size() + 1);
+        offset = 6 + (popUpText.size() + 1);
     }else if(text == "bio"){
         offset = 6 + (popUpText.size() + 1) + (name.size() + 1);
     }
@@ -69,9 +75,9 @@ void display(const State &state){
 
     if(state.getPageTitle() == 'M'){
         _add_yaml("header.yaml",{{"picType", url1}});
-        _add_yaml("mainPageBody.yaml", {{"othersPic", url2}, {"nameIndex", }});
+        _add_yaml("mainPageBody.yaml", {{"othersPic", url2}, {"nameIndex", state.offset(state.getName())}});
         _add_yaml("matchButtons.yaml");
-        if(state.getShowPopUp() == '1'){ //showPopUp is a char so that it can represent different pop up styles
+        if(state.getShowPopUp() == '1'){
             _add_yaml("Y/NPopUp.yaml");
         }
     }

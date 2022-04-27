@@ -18,14 +18,13 @@ class State{
     int getPercentMatch() const {return percentMatch;}
     int getAge() const{return age;}
     int getnumMatches() const {return numMatches;}
-    int offset(string text);
+    int offset(string text) const;
     string getPopUpText()const{return popUpText;}
     string getName() const{return name;}
     string getBio() const{return bio;}
     void read_from(const char *mem);
     void write_to(char *mem);
 };
-
 
 void display(const State &state);
 
