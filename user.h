@@ -13,9 +13,13 @@ class Account{
     string firstName;
     string lastName;
     string pronouns;
+    Account **matches=0;
+    int numMatches;
     int month;
     int day;
     int year;
+    int age;
+
   public:
     string get_email();
     string get_password();
@@ -24,9 +28,11 @@ class Account{
     string get_firstName();
     string get_lastName();
     string get_pronouns();
-    int get_month();
+    int get_month(); // Need to figure out how to use time library to figure out age
     int get_day();
-    int year();
+    int get_year();
+    int get_age();
+    int get_numMatches();
     void changeAge();
     void set_email(string eml);
     void set_password(string pswd);
@@ -38,6 +44,7 @@ class Account{
     void set_month(int m);
     void set_day(int m);
     void set_year(int m);
+    void add_match(Account &user);
 };
 
 #endif 

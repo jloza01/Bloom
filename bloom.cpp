@@ -4,6 +4,7 @@
 #include "/usr/local/cs/cs251/show_mem.h"
 #include <ctime>
 #include"user.h"
+#include"message.h"
 using namespace std;
 
 string Account::get_email(){
@@ -62,6 +63,23 @@ void Account::set_day(int d){
 }
 void Account::set_year(int y){
     year = y;
+}
+void Account::add_match(Account &user,int numMatches){
+    numMatches=+1;
+    Account **temp = new Account*[numMatches];
+    if(numMatches < 1 ){
+    for (int i = 0; i<numMatches-1; i++){
+        matches[i] = temp[i];
+    }
+    }
+    temp[numMatches] = &user;
+    matches = new Account*[numMatches];
+    delete[] matches;
+    matches = new Account*[numMatches];
+    for (int i = 0; i<numMatches; i++){
+        matches[i] = temp[i];
+    }
+    delete [] temp;
 }
 
 void test_account_class(){
