@@ -7,25 +7,25 @@ void State::read_from(const char *mem){
     numFields = 0;
     pageTitle = _get_tilde_terminated_string(mem);
     mem += (pageTitle.size() + 1);
-    numFields += (pageTitle.size() + 1);
+    numFields += 1;
     showPopUp = _get_char(mem, 1);
     mem += 1;
     numFields += 1;
     popUpText = _get_tilde_terminated_string(mem);
     mem += (popUpText.size() + 1);
-    numFields += (popUpText.size() + 1);
+    numFields += 1;
     name = _get_tilde_terminated_string(mem);
     mem += (name.size() + 1);
-    numFields += (name.size() + 1);
+    numFields += 1;
     age = _get_int(mem, 2);
     mem += 2;
-    numFields += 2;
+    numFields += 1;
     bio = _get_tilde_terminated_string(mem);
     mem += (bio.size() + 1);
     numFields += (bio.size() + 1);
     percentMatch = _get_int(mem, 2);
     mem += 2;
-    numFields += 2;
+    numFields += 1;
 }
 
 void State::write_to(char *mem){

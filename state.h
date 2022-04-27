@@ -6,8 +6,12 @@ using namespace std;
 
 class State{
     int percentMatch, age, numMatches, numFields;
-    string name, bio, popUpText, pageTitle;
-    char showPopUp;
+    string name, bio;
+    char showPopUp, pageTitle, popUpText;
+
+    //showPopUp: 0- no pop up, 1- y/n pop up, 2- enter text pop up
+    //pageTitle: M- main page, L- chat list, C- user chat
+    //popUpText: S- same match, M- more than friends, J- just friends, B- block user, R- report user, E- explain
 
     public:
     char getShowPopUp() const {return showPopUp;}
