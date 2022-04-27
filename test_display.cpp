@@ -14,6 +14,8 @@ void test_display() {
 int main() {
   _read_global_mem_from_file("frame1.txt");
   state.read_from(_global_mem);
+  ifstream f_label("labels.txt");
+  f_label.read(_global_mem + state.label_offset, 4000);
   test_display();
   _write_global_yaml_to_file("react.yaml");
   _write_global_mem_to_file("end_mem");
