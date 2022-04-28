@@ -5,16 +5,10 @@
 using namespace std;
 
 class State{
-<<<<<<< HEAD
     Account &potmatch;
-    int percentMatch, numFields;
+    int percentMatch, numFields, bioLength, nameLength, popUpTextLength;
     string name, bio;
     char showPopUp, pageTitle, popUpText;
-=======
-    int percentMatch, age, numMatches, numFields, bioLength, nameLength, popUpTextLength;
-    string name, bio, popUpText;
-    char showPopUp, pageTitle;
->>>>>>> bdec78d178f9d2e389a6e0f88a8b724b4fc622f8
 
     //showPopUp: 0- no pop up, 1- y/n pop up, 2- enter text pop up
     //pageTitle: M- main page, L- chat list, C- user chat
