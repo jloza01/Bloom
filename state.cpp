@@ -65,7 +65,7 @@ int State::offset(string text) const{
     }else if(text == "name"){
         offset = 6 + (popUpText.size() + 1);
     }else if(text == "bio"){
-        offset = 6 + (popUpText.size() + 1) + (getAccount().get_firstName().size() + 1) + (getAccount().get_lastName().size() + 1);
+        offset = 6 + (popUpText.size() + 1) + (getAccount().get_name().size() + 1);
     }
     return offset;
 }
