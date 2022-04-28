@@ -1,3 +1,6 @@
+#ifndef __USER_H__
+#define __USER_H__
+
 #include <string>
 #include <iostream>
 #include <cassert>
@@ -23,16 +26,16 @@ class Account{
     Account(string eml, string pwd){
       set_email(eml);
       set_password(pwd);
-      set_bio("");
-      set_firstName("");
-      set_lastName("");
+      set_bio("none");
+      set_firstName("none");
+      set_lastName("none");
       matches = 0;
       numMatches = 0;
       set_month(0);
-      set_prounouns("");
-      set_year("");
-      set_day("");
-      set_age("");
+      set_prounouns("none");
+      set_year(0);
+      set_day(0);
+      set_age(0);
     }
 
   public:
