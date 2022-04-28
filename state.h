@@ -23,6 +23,7 @@ class State{
     string getPopUpText()const{return popUpText;}
     void read_from(const char *mem);
     void write_to(char *mem);
+    void update();
 };
 
 void display(const State &state);

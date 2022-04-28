@@ -70,6 +70,24 @@ int State::offset(string text) const{
     return offset;
 }
 
+void State::update(){
+    Account test; //how do we get this to be the user they matched with
+    if(showPopUp == '1' && pageTitle == 'M'){
+        //how do we specify which button was pressed
+        //if yes to match
+        getAccount().add_match(test);
+
+        //if no to match
+        getAccount().add_to_blocked(test);
+    }else if(showPopUp =='1' && pageTitle == 'C'){
+        //if yes to block
+        getAccount().add_to_blocked(test);
+    }else if(showPopUp == '0' && pageTitle == 'M'){
+        
+    }
+
+}
+
 void display(const State &state){
     string url1 = "https://img.buzzfeed.com/buzzfeed-static/static/2015-05/20/13/campaign_images/webdr01/what-your-favorite-stock-photo-spaghetti-person-s-2-7471-1432142821-2_dblbig.jpg";
     string url2 = "https://previews.123rf.com/images/kurhan/kurhan1103/kurhan110300100/9050894-hombre-feliz.jpg";
