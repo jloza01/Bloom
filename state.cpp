@@ -21,11 +21,8 @@ void State::read_from(const char *mem){
     popUpText = _get_tilde_terminated_string(mem);
     mem += (popUpText.size() + 1);
 
-    getAccount().set_firstName(_get_tilde_terminated_string(mem));
-    mem += (getAccount().get_firstName().size() + 1);
-
-    getAccount().set_lastName(_get_tilde_terminated_string(mem));
-    mem += (getAccount().get_lastName().size() + 1);
+    getAccount().set_name(_get_tilde_terminated_string(mem));
+    mem += (getAccount().get_name().size() + 1);
 
     getAccount().set_bio(_get_tilde_terminated_string(mem));
     mem += (getAccount().get_bio().size() + 1);
@@ -47,11 +44,8 @@ void State::write_to(char *mem){
     _put_tilde_terminated_string(popUpText, mem);
     mem += (popUpText.size() + 1);
     
-    _put_tilde_terminated_string(getAccount().get_firstName(), mem);
-    mem += (getAccount().get_firstName().size() + 1);
-
-    _put_tilde_terminated_string(getAccount().get_lastName(), mem);
-    mem += (getAccount().get_lastName().size() + 1);
+    _put_tilde_terminated_string(getAccount().get_name(), mem);
+    mem += (getAccount().get_name().size() + 1);
     
     _put_tilde_terminated_string(getAccount().get_bio(), mem);
     mem += (getAccount().get_bio().size() + 1);
