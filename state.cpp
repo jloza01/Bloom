@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 #include"state.h"
+#include "user.h"
 #include"/usr/local/cs/cs251/react.h"
 
 void State::read_from(const char *mem){
@@ -11,7 +12,7 @@ void State::read_from(const char *mem){
     showPopUp = _get_char(mem, 1);
     mem += 1;
 
-    age = _get_int(mem, 2);
+    getAccount().set_age(_get_int(mem, 2));
     mem += 2;
 
     percentMatch = _get_int(mem, 2);
@@ -20,11 +21,11 @@ void State::read_from(const char *mem){
     popUpText = _get_tilde_terminated_string(mem);
     mem += (popUpText.size() + 1);
 
-    name = _get_tilde_terminated_string(mem);
-    mem += (name.size() + 1);
+    getAccount().set_name(_get_tilde_terminated_string(mem));
+    mem += (getAccount().get_name().size() + 1);
 
-    bio = _get_tilde_terminated_string(mem);
-    mem += (bio.size() + 1);
+    getAccount().set_bio(_get_tilde_terminated_string(mem));
+    mem += (getAccount().get_bio().size() + 1);
 }
 
 void State::write_to(char *mem){
@@ -34,7 +35,7 @@ void State::write_to(char *mem){
     _put_char(showPopUp, mem, 1);
     mem += 1;
 
-    _put_int(age, mem, 2);
+    _put_int(getAccount().get_age(), mem, 2);
     mem += 2;
         
     _put_int(percentMatch, mem, 2);
@@ -43,11 +44,11 @@ void State::write_to(char *mem){
     _put_tilde_terminated_string(popUpText, mem);
     mem += (popUpText.size() + 1);
     
-    _put_tilde_terminated_string(name, mem);
-    mem += (name.size() + 1);
+    _put_tilde_terminated_string(getAccount().get_name(), mem);
+    mem += (getAccount().get_name().size() + 1);
     
-    _put_tilde_terminated_string(bio, mem);
-    mem += (bio.size() + 1);
+    _put_tilde_terminated_string(getAccount().get_bio(), mem);
+    mem += (getAccount().get_bio().size() + 1);
 }
 
 
@@ -64,9 +65,27 @@ int State::offset(string text) const{
     }else if(text == "name"){
         offset = 6 + (popUpText.size() + 1);
     }else if(text == "bio"){
-        offset = 6 + (popUpText.size() + 1) + (name.size() + 1);
+        offset = 6 + (popUpText.size() + 1) + (getAccount().get_name().size() + 1);
     }
     return offset;
+}
+
+void State::update(){
+    Account test; //how do we get this to be the user they matched with
+    if(showPopUp == '1' && pageTitle == 'M'){
+        //how do we specify which button was pressed
+        //if yes to match
+        getAccount().add_match(test);
+
+        //if no to match
+        getAccount().add_to_blocked(test);
+    }else if(showPopUp =='1' && pageTitle == 'C'){
+        //if yes to block
+        getAccount().add_to_blocked(test);
+    }else if(showPopUp == '0' && pageTitle == 'M'){
+        
+    }
+
 }
 
 void display(const State &state){
@@ -75,7 +94,7 @@ void display(const State &state){
 
     if(state.getPageTitle() == 'M'){
         _add_yaml("header.yaml",{{"picType", url1}});
-        _add_yaml("mainPageBody.yaml", {{"othersPic", url2}, {"nameIndex", state.offset(state.getName())}});
+        _add_yaml("mainPageBody.yaml", {{"othersPic", url2}, {"nameIndex", state.offset("name")}});
         _add_yaml("matchButtons.yaml");
         if(state.getShowPopUp() == '1'){
             _add_yaml("Y/NPopUp.yaml");
