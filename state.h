@@ -13,7 +13,7 @@ class State{
     char showPopUp, pageTitle;
 
     //showPopUp: 0- no pop up, 1- y/n pop up, 2- enter text pop up
-    //pageTitle: M- main page, L- chat list, C- user chat
+    //pageTitle: M- main page, i- chat inbox, C- user chat
 
     public:
     Account &getAccount() {return potmatch;}

@@ -25,7 +25,6 @@ class Account{
     Account(string eml, string pwd){
       set_email(eml);
       set_password(pwd);
-<<<<<<< HEAD
       set_bio("n/a");
       set_name("n/a");
       matches = 0;
@@ -48,18 +47,6 @@ class Account{
       set_year("n/a");
       set_day("n/a");
       set_age("n/a");
-=======
-      set_bio("none");
-      set_firstName("none");
-      set_lastName("none");
-      matches = 0;
-      numMatches = 0;
-      set_month(0);
-      set_prounouns("none");
-      set_year(0);
-      set_day(0);
-      set_age(0);
->>>>>>> 0636f536602733b0b93c476a37c7636d43afd66a
     }
 
   public:
