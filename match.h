@@ -48,6 +48,8 @@ class match{
   void set_ans4(a4);
   void set_email1(em1);
   void set_email2(em2);
+  char checkIfUserAns(eml);
+  bool checkIfMatch();
 };
 
 #endif
