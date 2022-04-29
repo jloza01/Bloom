@@ -32,7 +32,7 @@
                 style:
                   color: rgb(74, 74, 74)
                   fontSize: 20
-                index: 2
+                index: 3
       - View:
           style:
             backgroundColor: transparent
