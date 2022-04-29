@@ -55,7 +55,6 @@ void State::write_to(char *mem){
 //Problems I need to fix still: 
 //  text in header in reading from frame1.txt and not labels.txt
 //  pageTitle is not being read in (is anything being read in correctly?)
-//  fix the indexing of all text for yaml files
 
 int State::offset(string text) const{
     int offset = 0;
@@ -69,6 +68,13 @@ int State::offset(string text) const{
     }
     return offset;
 }
+
+/*int State::label_offset() const{
+    int offset = 0;
+    offset = offset("bio") + (getAccount().get_bio().size() + 1);
+
+    return offset;
+}*/
 
 void State::update(){
     Account test; //how do we get this to be the user they matched with
@@ -94,10 +100,10 @@ void display(const State &state){
 
     if(state.getPageTitle() == 'M'){
         _add_yaml("header.yaml",{{"picType", url1}});
-        _add_yaml("mainPageBody.yaml", {{"othersPic", url2}, {"nameIndex", state.offset("name")}});
+        _add_yaml("mainPageBody.yaml", {{"othersPic", url2}, {"nameIndex", state.offset("name")}, {"bioIndex", state.offset("bio")}});
         _add_yaml("matchButtons.yaml");
         if(state.getShowPopUp() == '1'){
-            _add_yaml("Y/NPopUp.yaml");
+            _add_yaml("YNPopUp.yaml", {{"popUpIndex", state.offset("popUpText")}});
         }
     }
     if (state.getPageTitle() == "i"){ // chat inbox if statements
