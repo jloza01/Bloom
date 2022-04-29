@@ -28,7 +28,7 @@ class Account{
       numMatches = 0;
       set_month(0);
       set_prounouns("n/a");
-
+      set_age(0);
     }
       Account(){
       set_email("n/a");
@@ -39,6 +39,7 @@ class Account{
       numMatches = 0;
       set_month(0);
       set_prounouns("n/a");
+      set_age(0);
     }
 
   public:
