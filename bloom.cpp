@@ -25,14 +25,11 @@ string Account::get_firstName(){
 string Account::get_lastName(){
     return lastName;
 }
-int Account::get_month(){
-    return month;
+int Account:: get_age(){
+    return age;
 }
-int Account::get_year(){
-    return year;
-}
-int Account::get_day(){
-    return day;
+void Account:: set_age(int a){
+    age = a;
 }
 void Account::set_email(string eml){
     email = eml;
@@ -55,15 +52,7 @@ void Account::set_lastName(string ln){
 void Account::set_prounouns(string pn){
     pronouns = pn;
 }
-void Account::set_month(int m){
-    month = m;
-}
-void Account::set_day(int d){
-    day = d;
-}
-void Account::set_year(int y){
-    year = y;
-}
+
 void Account::add_match(Account &user){
     numMtchs = user.get_numMatches() + 1;
     Account **temp = new Account*[numMtchs];

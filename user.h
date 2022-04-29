@@ -17,9 +17,6 @@ class Account{
     string pronouns;
     Account **matches;
     int numMatches;
-    int month;
-    int day;
-    int year;
     int age;
 
     Account(string eml, string pwd){
@@ -29,11 +26,9 @@ class Account{
       set_name("n/a");
       matches = 0;
       numMatches = 0;
-      set_month(0);
+
       set_prounouns("n/a");
-      set_year("n/a");
-      set_day("n/a");
-      set_age("n/a");
+      set_age(0);
     }
       Account(){
       set_email("n/a");
@@ -42,7 +37,7 @@ class Account{
       set_name("n/a");
       matches = 0;
       numMatches = 0;
-      set_month(0);
+     
       set_prounouns("n/a");
       set_year("n/a");
       set_day("n/a");
