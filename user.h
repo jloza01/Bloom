@@ -39,7 +39,9 @@ class Account{
       numMatches = 0;
      
       set_prounouns("n/a");
-      set_age(0);
+      set_year("n/a");
+      set_day("n/a");
+      set_age("n/a");
     }
 
   public:

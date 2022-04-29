@@ -108,7 +108,7 @@ void display(const State &state){
         }
     }
     if (State.getPageTitle() == "C"){//specific chat inbox 
-        _add_yaml("chat.yaml")// have to figure out how to make this for a specific chat based on what you click on previously
+        _add_yaml("chat.yaml");// have to figure out how to make this for a specific chat based on what you click on previously
         int messages;
         for (int i = 0; i<messages; i++){
             _add_yaml("message.yaml");
