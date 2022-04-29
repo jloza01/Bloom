@@ -19,14 +19,14 @@ string Account::get_school(){
 string Account::get_bio(){
     return bio;
 }
-string Account::get_firstName(){
-    return firstName;
-}
-string Account::get_lastName(){
-    return lastName;
+string Account:: get_name(){
+    return name;
 }
 int Account:: get_age(){
     return age;
+}
+void Account:: set_name(nm){
+    name = nm;
 }
 void Account:: set_age(int a){
     age = a;
@@ -42,12 +42,6 @@ void Account::set_school(string schl){
 }
 void Account::set_bio(string b){
     bio = b;
-}
-void Account::set_firstName(string fn){
-    firstName = fn;
-}
-void Account::set_lastName(string ln){
-    lastName = ln;
 }
 void Account::set_prounouns(string pn){
     pronouns = pn;
