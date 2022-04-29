@@ -10,8 +10,7 @@ class Account{
     string password;
     string school;
     string bio;
-    string firstName;
-    string lastName;
+    string name;
     string pronouns;
     Account **matches;
     int numMatches;
@@ -23,16 +22,28 @@ class Account{
     Account(string eml, string pwd){
       set_email(eml);
       set_password(pwd);
-      set_bio("");
-      set_firstName("");
-      set_lastName("");
+      set_bio("n/a");
+      set_name("n/a");
       matches = 0;
       numMatches = 0;
       set_month(0);
-      set_prounouns("");
-      set_year("");
-      set_day("");
-      set_age("");
+      set_prounouns("n/a");
+      set_year("n/a");
+      set_day("n/a");
+      set_age("n/a");
+    }
+      Account(){
+      set_email("n/a");
+      set_password("n/a");
+      set_bio("n/a");
+      set_name("n/a");
+      matches = 0;
+      numMatches = 0;
+      set_month(0);
+      set_prounouns("n/a");
+      set_year("n/a");
+      set_day("n/a");
+      set_age("n/a");
     }
 
   public:

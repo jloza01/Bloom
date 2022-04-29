@@ -81,4 +81,18 @@ void display(const State &state){
             _add_yaml("Y/NPopUp.yaml");
         }
     }
+    if (state.getPageTitle() == "i"){ // chat inbox if statements
+        _add_yaml("chatpagehome.yaml");
+        int matches = this->getnumMatches();
+        for (int i = 0; i<matches; i++){
+            _add_yaml("messageButton.yaml");//eventually would have to add picture and name 
+        }
+    }
+    if (State.getPageTitle() == "C"){//specific chat inbox 
+        _add_yaml("chat.yaml")// have to figure out how to make this for a specific chat based on what you click on previously
+        int messages;
+        for (int i = 0; i<messages; i++){
+            _add_yaml("message.yaml");
+        }
+    }
 }
