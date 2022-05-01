@@ -19,6 +19,7 @@ class Account{
     int numMatches;
     int age;
 
+  public:
     Account(string eml, string pwd){
       set_email(eml);
       set_password(pwd);
@@ -39,10 +40,10 @@ class Account{
       numMatches = 0;
       set_prounouns("n/a");
      
-      set_age("n/a");
+      set_age(0);
     }
 
-  public:
+  
     string get_email();
     string get_password();
     string get_school();
@@ -55,7 +56,7 @@ class Account{
     void set_password(string pswd);
     void set_school(string schl);
     void set_bio(string b);
-    void set_name(nm);
+    void set_name(string nm);
     void set_prounouns(string pn);
     void set_age(int a);
     void add_match(Account &user);
