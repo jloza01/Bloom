@@ -37,9 +37,7 @@ class Account{
       set_name("n/a");
       matches = 0;
       numMatches = 0;
-     
       set_prounouns("n/a");
-      set_year("n/a");
       set_day("n/a");
       set_age("n/a");
     }
@@ -51,21 +49,15 @@ class Account{
     string get_bio();
     string get_name();
     string get_pronouns();
-    int get_month(); // Need to figure out how to use time library to figure out age
-    int get_day();
-    int get_year();
     int get_age();
     int get_numMatches();
-    void changeAge();
     void set_email(string eml);
     void set_password(string pswd);
     void set_school(string schl);
     void set_bio(string b);
     void set_name(nm);
     void set_prounouns(string pn);
-    void set_month(int m);
-    void set_day(int m);
-    void set_year(int m);
+    void set_age(int a);
     void add_match(Account &user);
 };
 

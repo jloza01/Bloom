@@ -74,14 +74,11 @@ void test_account_class(){
     bob.set_firstName("Bob");
     bob.set_lastName("the Builder");
     bob.set_prounouns("He/Him");
-    bob.set_month(1);
-    bob.set_day(13);
-    bob.set_year(2002);
     assert(bob.get_email()=="bobsemail@gmail.com");
     assert(bob.get_password()=="password123");
     assert(bob.get_school()=="St.Olaf");
     assert(bob.get_pronouns()=="He/Him");
-    assert(bob.get_year==2002);
+ 
 }
 
 void test_messages_class(){
