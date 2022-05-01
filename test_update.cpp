@@ -8,7 +8,7 @@ using namespace std;
 State state;
 
 void test_update() {
-    _read_event_info_file("frame1.event");
+    _read_event_info_file("popUpYes.event");
     state.update();
 }
 
