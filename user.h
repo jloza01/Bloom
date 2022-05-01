@@ -31,7 +31,7 @@ class Account{
       set_prounouns("n/a");
       set_age(0);
     }
-      Account(){
+    Account(){
       set_email("n/a");
       set_password("n/a");
       set_bio("n/a");

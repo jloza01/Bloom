@@ -55,11 +55,11 @@ void Account::add_match(Account &user){
         matches[i] = temp[i];
     }
     }
-    temp[numMtchs] = &user;
-    matches = new Account*[numMtchs];
+    temp[numMatches] = &user;
+    matches = new Account*[numMatches];
     delete[] matches;
-    matches = new Account*[numMtchs];
-    for (int i = 0; i<numMtchs; i++){
+    matches = new Account*[numMatches];
+    for (int i = 0; i<numMatches; i++){
         matches[i] = temp[i];
     }
     delete [] temp;
@@ -80,7 +80,7 @@ void test_account_class(){
  
 }
 
-void test_messages_class(){
+/*void test_messages_class(){
     Message m;
     m.set_message("hello world");
   //  m.set_timeSent();
@@ -88,8 +88,8 @@ void test_messages_class(){
     assert (m.get_message() == "hello world");
    // cout<< m.get_timeSent()<<endl;
    // cout<<m.get_timeRead()<<endl;
-}
+}*/
 int main(){
     test_account_class();
-    test_messages_class();
+    //test_messages_class();
 }
