@@ -12,7 +12,7 @@ void State::read_from(const char *mem){
     showPopUp = _get_char(mem, 1);
     mem += 1;
 
-    getAccount().set_age(_get_int(mem, 2));
+    getMatchAccount().set_age(_get_int(mem, 2));
     mem += 2;
 
     percentMatch = _get_int(mem, 2);
@@ -21,11 +21,11 @@ void State::read_from(const char *mem){
     popUpText = _get_tilde_terminated_string(mem);
     mem += (popUpText.size() + 1);
 
-    getAccount().set_name(_get_tilde_terminated_string(mem));
-    mem += (getAccount().get_name().size() + 1);
+    getMatchAccount().set_name(_get_tilde_terminated_string(mem));
+    mem += (getMatchAccount().get_name().size() + 1);
 
-    getAccount().set_bio(_get_tilde_terminated_string(mem));
-    mem += (getAccount().get_bio().size() + 1);
+    getMatchAccount().set_bio(_get_tilde_terminated_string(mem));
+    mem += (getMatchAccount().get_bio().size() + 1);
 }
 
 void State::write_to(char *mem){
@@ -35,7 +35,7 @@ void State::write_to(char *mem){
     _put_char(showPopUp, mem, 1);
     mem += 1;
 
-    _put_int(getAccount().get_age(), mem, 2);
+    _put_int(getMatchAccount().get_age(), mem, 2);
     mem += 2;
         
     _put_int(percentMatch, mem, 2);
@@ -44,11 +44,11 @@ void State::write_to(char *mem){
     _put_tilde_terminated_string(popUpText, mem);
     mem += (popUpText.size() + 1);
     
-    _put_tilde_terminated_string(getAccount().get_name(), mem);
-    mem += (getAccount().get_name().size() + 1);
+    _put_tilde_terminated_string(getMatchAccount().get_name(), mem);
+    mem += (getMatchAccount().get_name().size() + 1);
     
-    _put_tilde_terminated_string(getAccount().get_bio(), mem);
-    mem += (getAccount().get_bio().size() + 1);
+    _put_tilde_terminated_string(getMatchAccount().get_bio(), mem);
+    mem += (getMatchAccount().get_bio().size() + 1);
 }
 
 
@@ -64,34 +64,30 @@ int State::offset(string text) const{
     }else if(text == "name"){
         offset = 6 + (popUpText.size() + 1);
     }else if(text == "bio"){
-        offset = 6 + (popUpText.size() + 1) + (getAccount().get_name().size() + 1);
+        offset = 6 + (popUpText.size() + 1) + (getMatchAccount().get_name().size() + 1);
     }
     return offset;
 }
 
 /*int State::label_offset() const{
     int offset = 0;
-    offset = offset("bio") + (getAccount().get_bio().size() + 1);
+    offset = offset("bio") + (getMatchAccount().get_bio().size() + 1);
 
     return offset;
 }*/
 
 void State::update(){
-    Account test; //how do we get this to be the user they matched with
-    if(showPopUp == '1' && pageTitle == 'M'){
-        //how do we specify which button was pressed
-        //if yes to match
-        getAccount().add_match(test);
-
-        //if no to match
-        getAccount().add_to_blocked(test);
-    }else if(showPopUp =='1' && pageTitle == 'C'){
-        //if yes to block
-        getAccount().add_to_blocked(test);
-    }else if(showPopUp == '0' && pageTitle == 'M'){
-        
+    //Yes/No Button pop up    
+    if(_event_id_is("button_", 0)){ //no button pressed
+        showPopUp = 0;
+        getYourAccount().add_blocked(getMatchAccount());
+        write_to(_global_mem);
+    }else if(_event_id_is("button_", 1)){ //yes button pressed
+        showPopUp = 0;
+        pageTitle = "C";
+        getYourAccount().add_match(getMatchAccount());
+        write_to(_global_mem);
     }
-
 }
 
 void display(const State &state){
@@ -106,7 +102,7 @@ void display(const State &state){
             _add_yaml("YNPopUp.yaml", {{"popUpIndex", state.offset("popUpText")}});
         }
     }
-    if (state.getPageTitle() == "i"){ // chat inbox if statements
+    if (state.getPageTitle() == "I"){ // chat inbox if statements
         _add_yaml("chatpagehome.yaml");
         int matches = this->getnumMatches();
         for (int i = 0; i<matches; i++){

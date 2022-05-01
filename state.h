@@ -7,16 +7,17 @@
 using namespace std;
 
 class State{
-    Account potmatch;
-    int percentMatch, numFields, bioLength, nameLength, popUpTextLength;
+    Account you, potmatch;
+    int percentMatch, bioLength, nameLength, popUpTextLength;
     string popUpText;
     char showPopUp, pageTitle;
 
     //showPopUp: 0- no pop up, 1- y/n pop up, 2- enter text pop up
-    //pageTitle: M- main page, i- chat inbox, C- user chat
+    //pageTitle: M- main page, I- chat inbox, C- user chat
 
     public:
-    Account &getAccount() {return potmatch;}
+    Account &getMatchAccount() {return potmatch;}
+    Account &getYourAccount() {return you;}
     char getShowPopUp() {return showPopUp;}
     char getPageTitle() const {return pageTitle;}
     int getPercentMatch() const {return percentMatch;}
