@@ -42,6 +42,8 @@ class Account{
      
       set_age(0);
     }
+
+  
     string get_email();
     string get_password();
     string get_school();

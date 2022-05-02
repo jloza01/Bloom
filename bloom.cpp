@@ -48,10 +48,10 @@ void Account::set_prounouns(string pn){
 }
 
 void Account::add_match(Account &user){
-    numMatches = user.get_numMatches() + 1;
-    Account **temp = new Account*[numMatches];
-    if(numMatches < 2 ){
-    for (int i = 0; i<numMatches-1; i++){
+    int numMtchs = user.get_numMatches() + 1;
+    Account **temp = new Account*[numMtchs];
+    if(numMtchs < 2 ){
+    for (int i = 0; i<numMtchs-1; i++){
         matches[i] = temp[i];
     }
     }
@@ -71,7 +71,7 @@ void test_account_class(){
     bob.set_password("password123");
     bob.set_school("St.Olaf");
     bob.set_bio("I like to read");
-    bob.set_name("Bob the Builder");
+    bob.set_name("bob the builder");
     bob.set_prounouns("He/Him");
     assert(bob.get_email()=="bobsemail@gmail.com");
     assert(bob.get_password()=="password123");
@@ -83,11 +83,11 @@ void test_account_class(){
 /*void test_messages_class(){
     Message m;
     m.set_message("hello world");
-    m.set_timeSent();
-    m.set_timeRead();
+  //  m.set_timeSent();
+  //  m.set_timeRead();
     assert (m.get_message() == "hello world");
-    cout<< m.get_timeSent()<<endl;
-    cout<<m.get_timeRead()<<endl;
+   // cout<< m.get_timeSent()<<endl;
+   // cout<<m.get_timeRead()<<endl;
 }*/
 int main(){
     test_account_class();
