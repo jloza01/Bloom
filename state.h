@@ -19,15 +19,15 @@ class State{
     Account &getMatchAccount() {return potmatch;}
     Account &getYourAccount() {return you;}
     char getShowPopUp() {return showPopUp;}
-    char getPageTitle() const {return pageTitle;}
-    int getPercentMatch() const {return percentMatch;}
-    int offset(string text) const;
-    string getPopUpText()const{return popUpText;}
-    void read_from(const char *mem);
+    char getPageTitle() {return pageTitle;}
+    int getPercentMatch() {return percentMatch;}
+    int offset(string text);
+    string getPopUpText(){return popUpText;}
+    void read_from(char *mem);
     void write_to(char *mem);
     void update();
 };
 
-void display(const State &state);
+void display(State &state);
 
 #endif
