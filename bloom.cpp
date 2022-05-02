@@ -25,6 +25,9 @@ string Account:: get_name(){
 int Account:: get_age(){
     return age;
 }
+int Account:: get_numMatches(){
+    return numMatches;
+}
 void Account:: set_name(string nm){
     name = nm;
 }

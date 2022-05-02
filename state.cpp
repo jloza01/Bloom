@@ -5,7 +5,6 @@ using namespace std;
 #include"/usr/local/cs/cs251/react.h"
 
 void State::read_from(const char *mem){
-    numFields = 0;
     pageTitle = _get_char(mem, 1);
     mem += 1;
 
@@ -84,7 +83,7 @@ void State::update(){
         write_to(_global_mem);
     }else if(_event_id_is("button_", 1)){ //yes button pressed
         showPopUp = 0;
-        pageTitle = "C";
+        pageTitle ='C';
         getYourAccount().add_match(getMatchAccount());
         write_to(_global_mem);
     }
@@ -102,14 +101,14 @@ void display(const State &state){
             _add_yaml("YNPopUp.yaml", {{"popUpIndex", state.offset("popUpText")}});
         }
     }
-    if (state.getPageTitle() == "I"){ // chat inbox if statements
+    if (state.getPageTitle() == 'I'){ // chat inbox if statements
         _add_yaml("chatpagehome.yaml");
-        int matches = this->getnumMatches();
+        int matches = getYourAccount().get_numMatches();
         for (int i = 0; i<matches; i++){
             _add_yaml("messageButton.yaml");//eventually would have to add picture and name 
         }
     }
-    if (State.getPageTitle() == "C"){//specific chat inbox 
+    if (State.getPageTitle() == 'C'){//specific chat inbox 
         _add_yaml("chat.yaml");// have to figure out how to make this for a specific chat based on what you click on previously
         int messages;
         for (int i = 0; i<messages; i++){
