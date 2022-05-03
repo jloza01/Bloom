@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <cassert>
-#include "/usr/local/cs/cs251/show_mem.h"
+#include "/usr/local/cs/cs251/react.h"
 #include <ctime>
 using namespace std;
 
