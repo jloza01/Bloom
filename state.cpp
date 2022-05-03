@@ -4,7 +4,7 @@ using namespace std;
 #include "user.h"
 #include"/usr/local/cs/cs251/react.h"
 
-void State::read_from(const char *mem){
+void State::read_from(char *mem){
     pageTitle = _get_char(mem, 1);
     mem += 1;
 
@@ -55,7 +55,7 @@ void State::write_to(char *mem){
 //  text in header in reading from frame1.txt and not labels.txt
 //  pageTitle is not being read in (is anything being read in correctly?)
 
-int State::offset(string text) const{
+int State::offset(string text) {
     int offset = 0;
 
     if(text == "popUpText"){
@@ -68,7 +68,7 @@ int State::offset(string text) const{
     return offset;
 }
 
-/*int State::label_offset() const{
+/*int State::label_offset() {
     int offset = 0;
     offset = offset("bio") + (getMatchAccount().get_bio().size() + 1);
 
@@ -79,17 +79,17 @@ void State::update(){
     //Yes/No Button pop up    
     if(_event_id_is("button_", 0)){ //no button pressed
         showPopUp = 0;
-        getYourAccount().add_blocked(getMatchAccount());
+        //getYourAccount().add_blocked(getMatchAccount());
         write_to(_global_mem);
     }else if(_event_id_is("button_", 1)){ //yes button pressed
         showPopUp = 0;
-        pageTitle ='C';
+        pageTitle = 'C';
         getYourAccount().add_match(getMatchAccount());
         write_to(_global_mem);
     }
 }
 
-void display(const State &state){
+void display( State &state){
     string url1 = "https://img.buzzfeed.com/buzzfeed-static/static/2015-05/20/13/campaign_images/webdr01/what-your-favorite-stock-photo-spaghetti-person-s-2-7471-1432142821-2_dblbig.jpg";
     string url2 = "https://previews.123rf.com/images/kurhan/kurhan1103/kurhan110300100/9050894-hombre-feliz.jpg";
 
@@ -108,7 +108,7 @@ void display(const State &state){
             _add_yaml("messageButton.yaml");//eventually would have to add picture and name 
         }
     }
-    if (State.getPageTitle() == 'C'){//specific chat inbox 
+    if (state.getPageTitle() == 'C'){//specific chat inbox 
         _add_yaml("chat.yaml");// have to figure out how to make this for a specific chat based on what you click on previously
         int messages;
         for (int i = 0; i<messages; i++){
