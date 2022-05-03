@@ -61,7 +61,7 @@
                   position: absolute
                   top: 57
                   left: 125
-                index: 0
+                index: {yourProfileLab}
             - Image:
                 source: https://e1.pngegg.com/pngimages/767/1013/png-clipart-button-ui-alternative-system-folders-settings-icon.png
                 style:

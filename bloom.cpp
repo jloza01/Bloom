@@ -68,6 +68,7 @@ void Account::add_match(Account &user){
     delete [] temp;
 }
 
+/*
 void test_account_class(){
     Account bob;
     bob.set_email("bobsemail@gmail.com");
@@ -81,7 +82,7 @@ void test_account_class(){
     assert(bob.get_school()=="St.Olaf");
     assert(bob.get_pronouns()=="He/Him");
  
-}
+}*/
 
 /*void test_messages_class(){
     Message m;
@@ -91,8 +92,8 @@ void test_account_class(){
     assert (m.get_message() == "hello world");
    // cout<< m.get_timeSent()<<endl;
    // cout<<m.get_timeRead()<<endl;
-}*/
-int main(){
-    test_account_class();
-    //test_messages_class();
 }
+int main(){
+    //test_account_class();
+    //test_messages_class();
+}*/
