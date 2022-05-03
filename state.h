@@ -1,5 +1,6 @@
 #ifndef __STATE_H__
 #define __STATE_H__
+#include "user.h"
 
 #include<string>
 #include "user.h"
@@ -18,15 +19,15 @@ class State{
     Account &getMatchAccount() {return potmatch;}
     Account &getYourAccount() {return you;}
     char getShowPopUp() {return showPopUp;}
-    char getPageTitle() {return pageTitle;}
-    int getPercentMatch() {return percentMatch;}
-    int offset(string text);
+    char getPageTitle()  {return pageTitle;}
+    int getPercentMatch()  {return percentMatch;}
+    int offset(string text) ;
     string getPopUpText(){return popUpText;}
     void read_from(char *mem);
     void write_to(char *mem);
     void update();
 };
 
-void display(State &state);
+void display( State &state);
 
 #endif
