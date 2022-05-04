@@ -16,8 +16,11 @@ class Account{
     string name;
     string pronouns;
     Account **matches;
+    Account **blocks;
+    int numBlocks;
     int numMatches;
     int age;
+    string pic;
 
   public:
     Account(string eml, string pwd){
@@ -26,10 +29,12 @@ class Account{
       set_bio("n/a");
       set_name("n/a");
       matches = 0;
+      blocks = 0;
       numMatches = 0;
-
+      numBlocks = 0;
       set_prounouns("n/a");
       set_age(0);
+      set_pic("n/a");
     }
     Account(){
       set_email("n/a");
@@ -37,9 +42,11 @@ class Account{
       set_bio("n/a");
       set_name("n/a");
       matches = 0;
+      blocks = 0;
       numMatches = 0;
+      numBlocks = 0;
       set_prounouns("n/a");
-     
+      set_pic("n/a");
       set_age(0);
     }
 
@@ -50,8 +57,11 @@ class Account{
     string get_bio();
     string get_name();
     string get_pronouns();
+    string get_pic();
     int get_age();
     int get_numMatches();
+    int get_numBlocks();
+    string get_matches(int i);
     void set_email(string eml);
     void set_password(string pswd);
     void set_school(string schl);
@@ -59,7 +69,11 @@ class Account{
     void set_name(string nm);
     void set_prounouns(string pn);
     void set_age(int a);
+    void set_pic(string p);
     void add_match(Account &user);
+    void add_block(Account &user);
+    void update_numMatches();//adds 1 to num matches
+    void update_numBlocks();
 };
 
 #endif 

@@ -12,7 +12,7 @@ void test_display() {
 }
 
 int main() {
-  _read_global_mem_from_file("frame1.txt");
+  /*_read_global_mem_from_file("frame1.txt");
   state.read_from(_global_mem);
   state.offset("bioLab");
   ifstream f_label("labels.txt");
@@ -20,6 +20,15 @@ int main() {
   state.read_lab(_global_mem + state.offset("labelStart"));
   test_display();
   _write_global_yaml_to_file("react.yaml");
+  _write_global_mem_to_file("end_mem");*/
+  _read_global_mem_from_file("chatLab.txt");
+  state.read_from(_global_mem);
+  ifstream f_label("chatInbox.txt");
+  f_label.read(_global_mem, 0);
+  test_display();
+  _write_global_yaml_to_file("react.yaml");
   _write_global_mem_to_file("end_mem");
+
+
   delete _global_mem;
 }

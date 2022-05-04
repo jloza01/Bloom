@@ -1,0 +1,36 @@
+- Button:
+    style:
+      width: 320
+      height: 60
+      borderWidth: 1
+      borderColor: rgb(160, 160, 160) 
+      backgroundColor: white
+    children:
+      - Image:
+          source: {matchPic}
+          style:
+            width: 40
+            height: 40
+            backgroundColor: white
+            borderRadius: 100
+            borderWidth: 1
+            borderColor: rgb(100, 100, 100)
+            position: absolute
+            top: 8
+            left: 5
+      - Text:
+          style:
+            color: rgb(100, 100, 100)
+            fontSize: 20
+            position: absolute
+            top: 15
+            left: 50
+          index: {nameInd}
+      - Text:
+          style:
+            color: rgb(160, 160, 160)
+            fontSize: 14
+            position: absolute
+            top: 20
+            left: 100
+          index: 10
