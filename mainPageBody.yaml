@@ -26,13 +26,18 @@
             - Text:
                 style:
                   color: rgb(74, 74, 74)
-                  fontSize: 20
+                  fontSize: 17
                 index: {nameIndex}
             - Text:
                 style:
                   color: rgb(74, 74, 74)
-                  fontSize: 20
-                index: 3
+                  fontSize: 17
+                index: {ageLab}
+            - Text:
+                style:
+                  color: rgb(74, 74, 74)
+                  fontSize: 17
+                index: 2
       - View:
           style:
             backgroundColor: transparent
@@ -45,9 +50,14 @@
           children:
             - Text:
                 style:
-                  color: rgb(165, 61, 255)
+                  color: rgb(74, 74, 74)
                   fontSize: 25
-                index: 36
+                index: 5
+            - Text:
+                style:
+                  color: rgb(74, 74, 74)
+                  fontSize: 25
+                index: {matchPercentLab}
 - View:
     style:
       backgroundColor: transparent
@@ -61,9 +71,9 @@
           style:
             color: rgb(74, 74, 74)
             fontSize: 23
-          index: 60
+          index: {bioLab}
       - Text:
           style:
             color: 
             fontSize: 17
-          index: 65
+          index: {bioIndex}

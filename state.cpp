@@ -5,16 +5,16 @@ using namespace std;
 
 void State::read_lab(char *mem){
     yourProfileLab = _get_tilde_terminated_string(mem);
-    mem += (popUpText.size() + 1);
+    mem += (yourProfileLab.size() + 1);
 
     ageLab = _get_tilde_terminated_string(mem);
-    mem += (popUpText.size() + 1);
+    mem += (ageLab.size() + 1);
 
     matchPercentLab = _get_tilde_terminated_string(mem);
-    mem += (popUpText.size() + 1);
+    mem += (matchPercentLab.size() + 1);
 
     bioLab = _get_tilde_terminated_string(mem);
-    mem += (popUpText.size() + 1);
+    mem += (bioLab.size() + 1);
 }
 
 void State::read_from(char *mem){
@@ -63,18 +63,13 @@ void State::write_to(char *mem){
     mem += (getMatchAccount().get_bio().size() + 1);
 }
 
-
-//Problems I need to fix still: 
-//  text in header in reading from frame1.txt and not labels.txt
-//  pageTitle is not being read in (is anything being read in correctly?)
-
 int State::offset(string text) {
     int offset2 = 0;
 
     if(text == "popUpText"){
-        offset2 = 6;
+        offset2 = 8;
     }else if(text == "name"){
-        offset2 = 6 + (popUpText.size() + 1);
+        offset2 = offset("popUpText") + (popUpText.size() + 1);
     }else if(text == "bio"){
         offset2 = offset("name") + (getMatchAccount().get_name().size() + 1);
     }else if(text == "labelStart"){
@@ -109,8 +104,10 @@ void display(State &state){
 
     if(state.getPageTitle() == 0){
         _add_yaml("header.yaml",{{"picType", url1}, {"yourProfileLab", state.offset("labelStart")}});
-        _add_yaml("mainPageBody.yaml", {{"othersPic", url2}, {"nameIndex", state.offset("name")}, {"bioIndex", state.offset("bio")}});
-        _add_yaml("matchButtons.yaml");
+        _add_yaml("mainPageBody.yaml", {{"othersPic", url2}, {"nameIndex", state.offset("name")}, {"bioIndex", state.offset("bio")}, {"bioLab", state.offset("bioLab")}, {"ageLab", state.offset("ageLab")}, {"matchPercentLab", state.offset("matchPercentLab")}});
+        if(state.getShowPopUp() == 0){
+            _add_yaml("matchButtons.yaml");
+        }
         if(state.getShowPopUp() == 1){
             _add_yaml("YNPopUp.yaml", {{"popUpIndex", state.offset("popUpText")}});
         }
