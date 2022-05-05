@@ -30,23 +30,29 @@ void State::read_from(char *mem){
     pageTitle = _get_int(mem, 1);
     mem += 1;
 
-    showPopUp = _get_int(mem, 1);
-    mem += 1;
+    if (pageTitle== 0){
+        showPopUp = _get_int(mem, 1);
+        mem += 1;
 
-    getMatchAccount().set_age(_get_int(mem, 2));
-    mem += 3; //plus an extra one for the ~
+        getMatchAccount().set_age(_get_int(mem, 2));
+        mem += 3; //plus an extra one for the ~
 
-    percentMatch = _get_int(mem, 2);
-    mem += 3; //plus an extra one for the ~
+        percentMatch = _get_int(mem, 2);
+        mem += 3; //plus an extra one for the ~
  
-    popUpText = _get_tilde_terminated_string(mem);
-    mem += (popUpText.size() + 1);
+        popUpText = _get_tilde_terminated_string(mem);
+        mem += (popUpText.size() + 1);
 
-    getMatchAccount().set_name(_get_tilde_terminated_string(mem));
-    mem += (getMatchAccount().get_name().size() + 1);
+        getMatchAccount().set_name(_get_tilde_terminated_string(mem));
+        mem += (getMatchAccount().get_name().size() + 1);
 
-    getMatchAccount().set_bio(_get_tilde_terminated_string(mem));
-    mem += (getMatchAccount().get_bio().size() + 1);
+        getMatchAccount().set_bio(_get_tilde_terminated_string(mem));
+        mem += (getMatchAccount().get_bio().size() + 1);
+    }
+    else if (pageTitle == 1){
+        getMatchAccount().set_name(_get_tilde_terminated_string(mem));
+        mem+= (getMatchAccount().get_name().size() + 1);
+    }
 }
 
 void State::write_to(char *mem){
@@ -120,6 +126,7 @@ int State::offset(string text) {
     return offset2;
 }
 
+
 void State::update(){
     //Yes/No Button pop up    
     if(_event_id_is("button_", 0)){ //no button pressed
@@ -146,11 +153,13 @@ void display(State &state){
         }
     }
     if (state.getPageTitle() == 1){ // chat inbox if statements
-        _add_yaml("chatpagehome.yaml");
+        _add_yaml("chatpagehome.yaml",{{"yourPic", url1}, {"chat", 2}});
         int matches = state.getYourAccount().get_numMatches();
-        for (int i = 0; i<matches; i++){
-            _add_yaml("messageButton.yaml");//eventually would have to add picture and name 
-        }
+        state.getYourAccount().update_numMatches();
+        cout<<state.getYourAccount().get_numMatches();
+        //for (int i = 0; i<matches; i++){
+        _add_yaml("addChat.yaml", {{"matchPic", url2},{"chatlab", 7},{"nameInd",29}});//eventually would have to add picture and name 
+        //}
     }
     if (state.getPageTitle() == 2){//specific chat inbox 
         _add_yaml("chat.yaml");// have to figure out how to make this for a specific chat based on what you click on previously

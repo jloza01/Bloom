@@ -22,11 +22,17 @@ string Account::get_bio(){
 string Account:: get_name(){
     return name;
 }
+string Account:: get_pic(){
+    return pic;
+}
 int Account:: get_age(){
     return age;
 }
 int Account:: get_numMatches(){
     return numMatches;
+}
+int Account:: get_numBlocks(){
+    return numBlocks;
 }
 void Account:: set_name(string nm){
     name = nm;
@@ -49,38 +55,68 @@ void Account::set_bio(string b){
 void Account::set_prounouns(string pn){
     pronouns = pn;
 }
+void Account::update_numMatches(){
+    numMatches=numMatches+1;
+}
+void Account:: update_numBlocks(){
+    numBlocks = numBlocks +1;
+}
+void Account::set_pic(string p){
+    pic = p;
+}
+
+string Account::get_matches(int i){
+    
+    string email = (*matches[i]).get_email();
+    return email;
+}
 
 void Account::add_match(Account &user){
-    int numMtchs = user.get_numMatches() + 1;
-    Account **temp = new Account*[numMtchs];
-    if(numMtchs < 2 ){
+    int numMtchs = this->get_numMatches();
+    Account **temp = new Account*[numMtchs+1];
+    if(numMtchs < 1 ){
     for (int i = 0; i<numMtchs-1; i++){
-        matches[i] = temp[i];
+        temp[i] = this->matches[i];
     }
     }
     temp[numMatches] = &user;
-    matches = new Account*[numMatches];
-    delete[] matches;
-    matches = new Account*[numMatches];
-    for (int i = 0; i<numMatches; i++){
-        matches[i] = temp[i];
-    }
-    delete [] temp;
+    delete[] this->matches;
+    this->matches = temp;
+    update_numMatches();
 }
 
-/*
-void test_account_class(){
-    Account bob;
-    bob.set_email("bobsemail@gmail.com");
-    bob.set_password("password123");
+void Account::add_block(Account &user){
+    int numblks = this->get_numBlocks();
+    Account **temp = new Account*[numblks+1];
+    if(numblks < 1 ){
+    for (int i = 0; i<numblks-1; i++){
+        temp[i] = this->blocks[i];
+    }
+    }
+    temp[numblks] = &user;
+    delete[] this->blocks;
+    this->blocks = temp;
+    update_numBlocks();
+}
+
+
+
+/*void test_account_class(){
+    Account bob("bobsemail@gmail.com","password123");
+    Account barb("barbsemail@gmail.com", "password234");
+    Account karen("karensemail@gmail.com", "password345");
+    cout<<bob.get_numMatches()<<endl;
+    bob.add_match(barb);
+    cout<<bob.get_matches(0)<<endl;
+    cout<<bob.get_numMatches()<<endl;
+    bob.add_match(karen);
+    cout<<bob.get_matches(1)<<endl;
+    cout<<bob.get_numMatches()<<endl;
     bob.set_school("St.Olaf");
     bob.set_bio("I like to read");
     bob.set_name("bob the builder");
     bob.set_prounouns("He/Him");
-    assert(bob.get_email()=="bobsemail@gmail.com");
-    assert(bob.get_password()=="password123");
-    assert(bob.get_school()=="St.Olaf");
-    assert(bob.get_pronouns()=="He/Him");
+    
  
 }*/
 
@@ -92,8 +128,8 @@ void test_account_class(){
     assert (m.get_message() == "hello world");
    // cout<< m.get_timeSent()<<endl;
    // cout<<m.get_timeRead()<<endl;
-}
-int main(){
+}*/
+//int main(){
     //test_account_class();
     //test_messages_class();
-}*/
+//}
