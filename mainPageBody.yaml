@@ -46,7 +46,7 @@
             borderWidth: 1
             borderColor: black
             top: 170
-            left: -1815
+            left: -750
           children:
             - Text:
                 style:

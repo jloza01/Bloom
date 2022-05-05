@@ -24,7 +24,7 @@
             height: 50
             borderRadius: 30
             top: 270
-            left: -573
+            left: -375
       - Button:
           style:
             backgroundColor: rgb(207, 27, 27)
@@ -32,11 +32,4 @@
             height: 50
             borderRadius: 30
             top: 270
-            left: -1145
-      - Button:
-          style:
-            backgroundColor: transparent
-            width: 100
-            height: 50
-            borderRadius: 30
-            top: 270
+            left: -750

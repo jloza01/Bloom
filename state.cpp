@@ -5,16 +5,25 @@ using namespace std;
 
 void State::read_lab(char *mem){
     yourProfileLab = _get_tilde_terminated_string(mem);
-    mem += (yourProfileLab.size() + 1);
+    mem += 13;
 
     ageLab = _get_tilde_terminated_string(mem);
-    mem += (ageLab.size() + 1);
+    mem += 5;
 
     matchPercentLab = _get_tilde_terminated_string(mem);
-    mem += (matchPercentLab.size() + 1);
+    mem += 8;
 
     bioLab = _get_tilde_terminated_string(mem);
-    mem += (bioLab.size() + 1);
+    mem += 5;
+
+    popUpLab = _get_tilde_terminated_string(mem);
+    mem += 29;
+
+    yesLab = _get_tilde_terminated_string(mem);
+    mem += 4;
+
+    noLab = _get_tilde_terminated_string(mem);
+    mem += 4;
 }
 
 void State::read_from(char *mem){
@@ -48,10 +57,10 @@ void State::write_to(char *mem){
     mem += 1;
 
     _put_int(getMatchAccount().get_age(), mem, 2);
-    mem += 2;
+    mem += 3; //plus an extra 1 so a ~ is written
         
     _put_int(percentMatch, mem, 2);
-    mem += 2;
+    mem += 3; //plus an extra 1 so a ~ is written
     
     _put_tilde_terminated_string(popUpText, mem);
     mem += (popUpText.size() + 1);
@@ -61,6 +70,27 @@ void State::write_to(char *mem){
     
     _put_tilde_terminated_string(getMatchAccount().get_bio(), mem);
     mem += (getMatchAccount().get_bio().size() + 1);
+
+    _put_tilde_terminated_string(yourProfileLab, mem);
+    mem += 13;
+
+    _put_tilde_terminated_string(ageLab, mem);
+    mem += 5;
+
+    _put_tilde_terminated_string(matchPercentLab, mem);
+    mem += 8;
+
+    _put_tilde_terminated_string(bioLab, mem);
+    mem += 5;
+
+    _put_tilde_terminated_string(popUpLab, mem);
+    mem += 29;
+
+    _put_tilde_terminated_string(yesLab, mem);
+    mem += 4;
+
+    _put_tilde_terminated_string(noLab, mem);
+    mem += 4;
 }
 
 int State::offset(string text) {
@@ -75,11 +105,17 @@ int State::offset(string text) {
     }else if(text == "labelStart"){
         offset2 = offset("bio") + (getMatchAccount().get_bio().size() + 1);
     }else if(text == "ageLab"){
-        offset2 = offset("labelStart") + (getYourProfileLab().size() +1);
-    }else if(text == "matchPercentLab"){
-        offset2 = offset("ageLab") + (getAgeLab().size() + 1);
+        offset2 = offset("labelStart") + 13; //size of yourProfile lab +1
+    }else if(text == "matchPercentLab"){ 
+        offset2 = offset("ageLab") + 5; //size of ageLab +1
     }else if(text == "bioLab"){
-        offset2 = offset("matchPercentLab") + (getMatchPercentLab().size() + 1);
+        offset2 = offset("matchPercentLab") + 8; //size of matchPercentLab +1
+    }else if(text == "popUpLab"){
+        offset2 = offset("bioLab") + 5; //size of bioLab +1
+    }else if(text == "yesLab"){
+        offset2 = offset("popUpLab") + 29; //size of popUpLab +1
+    }else if(text == "noLab"){
+        offset2 = offset("yesLab") + 4; //size of yesLab +1
     }
     return offset2;
 }
@@ -91,8 +127,7 @@ void State::update(){
         //getYourAccount().add_blocked(getMatchAccount());
         write_to(_global_mem);
     }else if(_event_id_is("button_", 1)){ //yes button pressed
-        showPopUp = 0;
-        pageTitle = 2;
+        showPopUp = 1;
         getYourAccount().add_match(getMatchAccount());
         write_to(_global_mem);
     }
@@ -105,11 +140,9 @@ void display(State &state){
     if(state.getPageTitle() == 0){
         _add_yaml("header.yaml",{{"picType", url1}, {"yourProfileLab", state.offset("labelStart")}});
         _add_yaml("mainPageBody.yaml", {{"othersPic", url2}, {"nameIndex", state.offset("name")}, {"bioIndex", state.offset("bio")}, {"bioLab", state.offset("bioLab")}, {"ageLab", state.offset("ageLab")}, {"matchPercentLab", state.offset("matchPercentLab")}});
-        if(state.getShowPopUp() == 0){
-            _add_yaml("matchButtons.yaml");
-        }
+        _add_yaml("matchButtons.yaml");
         if(state.getShowPopUp() == 1){
-            _add_yaml("YNPopUp.yaml", {{"popUpIndex", state.offset("popUpText")}});
+            _add_yaml("YNPopUp.yaml", {{"popUpIndex", state.offset("popUpText")}, {"popUpLab", state.offset("popUpLab")}, {"yesIndex", state.offset("yesLab")}, {"noIndex", state.offset("noLab")}});
         }
     }
     if (state.getPageTitle() == 1){ // chat inbox if statements

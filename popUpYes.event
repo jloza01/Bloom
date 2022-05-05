@@ -6,6 +6,6 @@
     point_x: 47
     point_y: 613
     nodes:
-      - Button_5
-    id: button_0
+      - Button_1
+    id: button_1
 - first_name: 'me'

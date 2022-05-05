@@ -11,7 +11,7 @@ class State{
     string popUpText;
 
     //labels text
-    string yourProfileLab, bioLab, ageLab, matchPercentLab;
+    string yourProfileLab, bioLab, ageLab, matchPercentLab, popUpLab, yesLab, noLab;
     
     //showPopUp: 0- no pop up, 1- y/n pop up, 2- enter text pop up
     //pageTitle: 0- main page, 1- chat inbox, 1- user chat

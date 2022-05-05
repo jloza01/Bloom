@@ -9,33 +9,16 @@
       - Text:
           style:
             color: black
-            fontSize: 30
+            fontSize: 20
             position: absolute
-            left: 37
           index: {popUpIndex}
       - Text:
           style:
             color: black
-            fontSize: 30
+            fontSize: 28
             position: absolute
-            left: 52
             top: 30
-          index: 135
-      - Text:
-          style:
-            color: black
-            fontSize: 20
-            position: absolute
-            top: 70
-          index: 145
-      - Text:
-          style:
-            color: black
-            fontSize: 20
-            position: absolute
-            top: 90
-            left: 60
-          index: 172
+          index: {popUpLab}
       - Button:
           style:
             backgroundColor: black
@@ -52,3 +35,19 @@
             borderRadius: 30
             top: 90
             left: 140
+      - Text:
+          style:
+            color: white
+            fontSize: 20
+            position: absolute
+            top: 150
+            left: 40
+          index: {yesIndex}
+      - Text:
+          style:
+            color: white
+            fontSize: 20
+            position: absolute
+            top: 150
+            left: 170
+          index: {noIndex}
