@@ -5,6 +5,7 @@
       justifyContent: space-between
     children:
       - Button:
+          id: button_1
           style:
             backgroundColor: rgb(124, 214, 136)
             width: 106
@@ -18,6 +19,7 @@
                   fontSize: 20
                 index: 
       - Button:
+          id: button_2
           style:
             backgroundColor: rgb(255, 184, 230)
             width: 106
@@ -26,6 +28,7 @@
             top: 270
             left: -375
       - Button:
+          id: buttonn_3
           style:
             backgroundColor: rgb(207, 27, 27)
             width: 100

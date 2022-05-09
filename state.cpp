@@ -128,16 +128,36 @@ int State::offset(string text) {
 
 
 void State::update(){
-    //Yes/No Button pop up    
-    if(_event_id_is("button_", 0)){ //no button pressed
+
+    //main page match buttons
+    if(_event_id_is("button_", 3)){ //decline red button pressed
+        //getYourAccount().add_blocked(getMatchAccount());
+    } else if(_event_id_is("button_", 2)) { //pink romance button pressed
+        //check match function call here
+        //if match presses the same button
+        showPopUp = 1;
+        popUpText = "You and Jake Matched!";
+        write_to(_global_mem);
+    } else if(_event_id_is("button_", 1)){ //green friend button pressed
+        //check match function call here
+        //if match presses the same button
+        showPopUp = 1;
+        popUpText = "You and Jake Matched!";
+        write_to(_global_mem);
+    }
+    
+    //Yes/No Button pop up 
+    if(_event_id_is("button_", 5)){ //no button pressed
         showPopUp = 0;
         //getYourAccount().add_blocked(getMatchAccount());
         write_to(_global_mem);
-    }else if(_event_id_is("button_", 1)){ //yes button pressed
-        showPopUp = 1;
+    }else if(_event_id_is("button_", 4)){ //yes button pressed
+        showPopUp = 0;
+        pageTitle = 1;
         getYourAccount().add_match(getMatchAccount());
         write_to(_global_mem);
     }
+    
 }
 
 void display(State &state){

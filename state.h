@@ -6,6 +6,7 @@
 using namespace std;
 
 class State{
+    //match match;
     Account you, potmatch;
     int percentMatch, bioLength, nameLength, popUpTextLength, showPopUp, pageTitle;
     string popUpText;
@@ -33,6 +34,7 @@ class State{
     void read_from(char *mem);
     void write_to(char *mem);
     void update();
+    void setMatch(Account you, Account potMatch);
 };
 
 void display( State &state);
