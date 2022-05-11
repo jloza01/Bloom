@@ -28,6 +28,8 @@ int main() {
   _write_global_yaml_to_file("react.yaml");
   _write_global_mem_to_file("end_mem");*/
 
+  cout << "chat: " << state.getChatContent();
+
 
   delete _global_mem;
 }

@@ -122,6 +122,8 @@ int State::offset(string text) {
         offset2 = offset("popUpLab") + 29; //size of popUpLab +1
     }else if(text == "noLab"){
         offset2 = offset("yesLab") + 4; //size of yesLab +1
+    }else if(text == "endOfMem"){
+        offset2 = offset("noLab") + 3; //size of noLb +1
     }
     return offset2;
 }
@@ -153,9 +155,14 @@ void State::update(){
         write_to(_global_mem);
     }else if(_event_id_is("button_", 4)){ //yes button pressed
         showPopUp = 0;
-        pageTitle = 1;
+        pageTitle = 2;
         getYourAccount().add_match(getMatchAccount());
         write_to(_global_mem);
+    }
+
+    //chat inbox
+    if(getPageTitle() == 2 && _received_event()){
+        chatContent = "Text";
     }
     
 }
@@ -181,11 +188,20 @@ void display(State &state){
         _add_yaml("addChat.yaml", {{"matchPic", url2},{"chatlab", 7},{"nameInd",29}});//eventually would have to add picture and name 
         //}
     }
-    if (state.getPageTitle() == 2){//specific chat inbox 
-        _add_yaml("chat.yaml");// have to figure out how to make this for a specific chat based on what you click on previously
+    if(state.getPageTitle() == 2){ //specific chat inbox
+        _add_yaml("header.yaml",{{"picType", url2}, {"yourProfileLab", state.offset("labelStart")}});
+        _add_yaml("chatbutton.yaml");
+        if(state.getChatContent() != "0"){
+            _add_yaml("onechatbubble.yaml", {{"chatIndex", state.offset("endOfMem")}});
+        }
+    }
+
+
+   /* if (state.getPageTitle() == 2){//specific chat inbox 
+        _add_yaml("addChat.yaml");// have to figure out how to make this for a specific chat based on what you click on previously
         int messages = 0; //temporary initilization
         for (int i = 0; i<messages; i++){
             _add_yaml("message.yaml");
         }
-    }
+    }*/
 }

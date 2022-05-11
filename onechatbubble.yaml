@@ -1,0 +1,23 @@
+            - Button:
+                style:
+                  width: 320
+                  height: 50
+                  backgroundColor: white
+                children:      
+                  - Button:      
+                      style:
+                        width: 125
+                        height: 40
+                        borderRadius: 40
+                        backgroundColor: rgb(174, 186, 255)
+                        position: absolute
+                        left: 195 
+                      children:
+                        - Text:
+                            style:
+                              color: white
+                              fontsize: 15
+                              position: absolute
+                              top: 10
+                              left: 15
+                            index: {chatIndex}

@@ -9,7 +9,7 @@ class State{
     //match match;
     Account you, potmatch;
     int percentMatch, bioLength, nameLength, popUpTextLength, showPopUp, pageTitle;
-    string popUpText;
+    string popUpText, chatContent = "0";
 
     //labels text
     string yourProfileLab, bioLab, ageLab, matchPercentLab, popUpLab, yesLab, noLab;
@@ -30,6 +30,7 @@ class State{
     string getBioLab() {return bioLab;}
     string getAgeLab() {return ageLab;}
     string getMatchPercentLab() {return matchPercentLab;}
+    string getChatContent(){return chatContent;}
     void read_lab(char *mem);
     void read_from(char *mem);
     void write_to(char *mem);
