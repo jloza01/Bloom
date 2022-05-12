@@ -8,9 +8,10 @@ int main() {
   State state;
 
   _read_global_mem_from_file("frame1.txt");
+  
   state.read_from(_global_mem);
   ifstream f_label("labels.txt");
-  f_label.read(_global_mem + state.offset("labelStart"), 4000);
+  f_label.read(_global_mem + state.offset("labelStart"), 162);
   state.read_lab(_global_mem + state.offset("labelStart"));
   _read_event_info_file("event_info");
 

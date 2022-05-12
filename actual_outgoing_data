@@ -62,7 +62,7 @@
                   position: absolute
                   top: 57
                   left: 125
-                index: 68
+                index: 18
             - Image:
                 source: https://e1.pngegg.com/pngimages/767/1013/png-clipart-button-ui-alternative-system-folders-settings-icon.png
                 style:
@@ -82,6 +82,7 @@
             borderBottomColor: rgb(190, 190, 190)
           children:
             - Button:
+                id: button_6
                 style:
                   width: 30
                   height: 20
@@ -110,42 +111,22 @@
                         top: 4
                         left: 10
             - TextInput:
-                index: 38
+                index: 165
                 len: 40
                 style:
                   width: 260
                   height: 20
-                  borderRadius: 10
+                  borderRadius: 5
                   borderWidth: 1
                   position: absolute
                   top: 20%
                   left: 55
                   fontSize: 15
-                  color: rgb(200, 200, 200)
+                  color: 'black'
                   backgroundColor: 'white'
                   borderColor: rgb(160, 160, 160)
-            - Button:
-                style:
-                  width: 320
-                  height: 50
-                  backgroundColor: white
-                children:      
-                  - Button:      
-                      style:
-                        width: 125
-                        height: 40
-                        borderRadius: 40
-                        backgroundColor: rgb(174, 186, 255)
-                        position: absolute
-                        left: 195 
-                      children:
-                        - Text:
-                            style:
-                              color: white
-                              fontsize: 15
-                              position: absolute
-                              top: 10
-                              left: 15
-                            index: 135
+                extra_props:
+                  placeholder: "Enter message here"
+                  placeholderTextColor: rgb(200, 200, 200)
 ---
-2023~47~No Pop Up~Jake Johnson~This is my bio. I <3 software design~Your Profile~Age:~% Match~Bio:~Do you want to start a chat?~Yes~No
+2023~47~No Pop Up~Jake Johnson~This is my bio. I <3 software design~Your Profile~Age:~% Match~Bio:~Do you want to start a chat?~Yes~No~Chat~You matched! Say Hi!<3

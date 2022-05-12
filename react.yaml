@@ -61,7 +61,7 @@
                   position: absolute
                   top: 57
                   left: 125
-                index: 17
+                index: 18
             - Image:
                 source: https://e1.pngegg.com/pngimages/767/1013/png-clipart-button-ui-alternative-system-folders-settings-icon.png
                 style:
@@ -81,6 +81,7 @@
             borderBottomColor: rgb(190, 190, 190)
           children:
             - Button:
+                id: button_6
                 style:
                   width: 30
                   height: 20
@@ -109,17 +110,20 @@
                         top: 4
                         left: 10
             - TextInput:
-                index: 38
+                index: 165
                 len: 40
                 style:
                   width: 260
                   height: 20
-                  borderRadius: 10
+                  borderRadius: 5
                   borderWidth: 1
                   position: absolute
                   top: 20%
                   left: 55
                   fontSize: 15
-                  color: rgb(200, 200, 200)
+                  color: 'black'
                   backgroundColor: 'white'
                   borderColor: rgb(160, 160, 160)
+                extra_props:
+                  placeholder: "Enter message here"
+                  placeholderTextColor: rgb(200, 200, 200)

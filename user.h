@@ -17,6 +17,7 @@ class Account{
     string pronouns;
     Account **matches;
     Account **blocks;
+    
     int numBlocks;
     int numMatches;
     int age;

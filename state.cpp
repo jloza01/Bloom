@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 #include"state.h"
+#include"message.h"
 #include"/usr/local/cs/cs251/react.h"
 
 void State::read_lab(char *mem){
@@ -23,36 +24,42 @@ void State::read_lab(char *mem){
     mem += 4;
 
     noLab = _get_tilde_terminated_string(mem);
-    mem += 4;
+    mem += 3;
+
+    chatLab = _get_tilde_terminated_string(mem);
+    mem += 5;
+
+    helloLab = _get_tilde_terminated_string(mem);
+    mem += 25;
+}
+void State::read_messages(char *mem){
+    //if(this->numMessages > 0){
+    //    for (int i = 0; i< this->numMessages; i++)
+     //   {}
+   // }
 }
 
 void State::read_from(char *mem){
-    pageTitle = _get_int(mem, 1);
+    pageTitle = _get_int(mem,1);
     mem += 1;
 
-    if (pageTitle== 0){
-        showPopUp = _get_int(mem, 1);
-        mem += 1;
+    showPopUp = _get_int(mem, 1);
+    mem += 1;
 
-        getMatchAccount().set_age(_get_int(mem, 2));
-        mem += 3; //plus an extra one for the ~
+    getMatchAccount().set_age(_get_int(mem, 2));
+    mem += 3; //plus an extra one for the ~
 
-        percentMatch = _get_int(mem, 2);
-        mem += 3; //plus an extra one for the ~
+    percentMatch = _get_int(mem, 2);
+    mem += 3; //plus an extra one for the ~
  
-        popUpText = _get_tilde_terminated_string(mem);
-        mem += (popUpText.size() + 1);
+    popUpText = _get_tilde_terminated_string(mem);
+    mem += (popUpText.size() + 1);
 
-        getMatchAccount().set_name(_get_tilde_terminated_string(mem));
-        mem += (getMatchAccount().get_name().size() + 1);
+    getMatchAccount().set_name(_get_tilde_terminated_string(mem));
+    mem += (getMatchAccount().get_name().size() + 1);
 
-        getMatchAccount().set_bio(_get_tilde_terminated_string(mem));
-        mem += (getMatchAccount().get_bio().size() + 1);
-    }
-    else if (pageTitle == 1){
-        getMatchAccount().set_name(_get_tilde_terminated_string(mem));
-        mem+= (getMatchAccount().get_name().size() + 1);
-    }
+    getMatchAccount().set_bio(_get_tilde_terminated_string(mem));
+    mem += (getMatchAccount().get_bio().size() + 1);
 }
 
 void State::write_to(char *mem){
@@ -96,7 +103,21 @@ void State::write_to(char *mem){
     mem += 4;
 
     _put_tilde_terminated_string(noLab, mem);
-    mem += 4;
+    mem += 3;
+
+    _put_tilde_terminated_string(chatLab, mem);
+    mem += 5;
+
+    _put_tilde_terminated_string(helloLab, mem);
+    mem += 25;
+
+    if(this->numMessages > 0){
+        mem += 338;
+        for (int i = 0; i< this->numMessages; i++){
+            _put_tilde_terminated_string((*messages[i]).get_message(), mem);
+            mem += ((*messages[i]).get_message().size());
+        }
+    }
 }
 
 int State::offset(string text) {
@@ -122,8 +143,12 @@ int State::offset(string text) {
         offset2 = offset("popUpLab") + 29; //size of popUpLab +1
     }else if(text == "noLab"){
         offset2 = offset("yesLab") + 4; //size of yesLab +1
-    }else if(text == "endOfMem"){
+    }else if(text == "chatLab"){
         offset2 = offset("noLab") + 3; //size of noLb +1
+    }else if(text == "helloLab"){
+        offset2 = offset("chatLab") + 5;
+    }else if(text == "endOfMem"){
+        offset2 = offset("helloLab") + 25;
     }
     return offset2;
 }
@@ -161,9 +186,25 @@ void State::update(){
     }
 
     //chat inbox
-    if(getPageTitle() == 2 && _received_event()){
-        chatContent = "Text";
+    if(getPageTitle() == 2 && _event_id_is("button_", 6)){
+        numMessages += 1;
+        Message m(getYourAccount().get_email(), _get_tilde_terminated_string(_global_mem + offset("endOfMem")));
+        if(numMessages == 1){
+            messages = new Message*[numMessages];
+            messages[0] = &m;
+            /*messages[0].set_email(getYourAccount().get_email());
+            messages[0].set_message(_get_tilde_terminated_string(_global_mem + offset("endOfMem")));*/
+        }else{
+            Message **tmp = new Message*[numMessages];
+            for(int i = 0; i<numMessages-2; i++){
+                tmp[i] = messages[i];
+            }
+            messages[numMessages-1] = &m;
+        }
+    }if(getPageTitle() ==2 && _received_event()){
+        
     }
+
     
 }
 
@@ -179,7 +220,7 @@ void display(State &state){
             _add_yaml("YNPopUp.yaml", {{"popUpIndex", state.offset("popUpText")}, {"popUpLab", state.offset("popUpLab")}, {"yesIndex", state.offset("yesLab")}, {"noIndex", state.offset("noLab")}});
         }
     }
-    if (state.getPageTitle() == 1){ // chat inbox if statements
+    /*if (state.getPageTitle() == 1){ // chat inbox if statements
         _add_yaml("chatpagehome.yaml",{{"yourPic", url1}, {"chat", 2}});
         int matches = state.getYourAccount().get_numMatches();
         state.getYourAccount().update_numMatches();
@@ -187,13 +228,15 @@ void display(State &state){
         //for (int i = 0; i<matches; i++){
         _add_yaml("addChat.yaml", {{"matchPic", url2},{"chatlab", 7},{"nameInd",29}});//eventually would have to add picture and name 
         //}
-    }
+    }*/
     if(state.getPageTitle() == 2){ //specific chat inbox
-        _add_yaml("header.yaml",{{"picType", url2}, {"yourProfileLab", state.offset("labelStart")}});
-        _add_yaml("chatbutton.yaml");
-        if(state.getChatContent() != "0"){
-            _add_yaml("onechatbubble.yaml", {{"chatIndex", state.offset("endOfMem")}});
-        }
+        _add_yaml("header.yaml",{{"picType", url2}, {"yourProfileLab", state.offset("name")}});
+        _add_yaml("chatbutton.yaml",{{"chatIndex", state.offset("endOfMem")}});
+        if(state.numMessages > 0){
+            _add_yaml("onechatbubble.yaml", {{"messageIndex", 500}});
+       
+        
+    }
     }
 
 
