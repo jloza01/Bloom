@@ -100,10 +100,42 @@
           children:
             - Text:
                 style:
+<<<<<<< HEAD
                   color: rgb(74, 74, 74)
                   fontSize: 17
                 index: 18
             - Text:
+=======
+                  width: 30
+                  height: 20
+                  borderRadius: 4
+                  backgroundColor: rgb(174, 186, 255)
+                  position: absolute
+                  top: 20%
+                  left: 9
+                children:
+                  - Button:
+                      style:
+                        width: 12
+                        height: 20
+                        borderRadius: 3
+                        position: absolute
+                        backgroundColor: rgb(174, 186, 255)
+                        top: -4
+                        left: 9
+                  - Button:
+                      style:
+                        width: 10
+                        height: 10
+                        borderRadius: 100
+                        position: absolute
+                        backgroundColor: white
+                        top: 4
+                        left: 10
+            - TextInput:
+                index: 500
+                len: 40
+>>>>>>> 5081ab43b16f2e18bd235d809fe8d58c5d19e66f
                 style:
                   color: rgb(74, 74, 74)
                   fontSize: 17

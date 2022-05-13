@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 - message_id: 6 poll
+=======
+- message_id: 1 poll
+>>>>>>> 5081ab43b16f2e18bd235d809fe8d58c5d19e66f
 []
 - first_name: 'Grace'
