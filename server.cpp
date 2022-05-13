@@ -20,10 +20,6 @@ int main() {
   
   state.read_lab(_global_mem + state.offset("labelStart"));
  
-  
-
-
-  
 
   //if (! _just_starting()) state.read_from(_global_mem);
   cout<<_global_mem[500]<< "line 27"<<endl;
