@@ -32,12 +32,12 @@ void State::read_lab(char *mem){
     helloLab = _get_tilde_terminated_string(mem);
     mem += 25;
 }
-void State::read_messages(char *mem){
+//void State::read_messages(char *mem){
     //if(this->numMessages > 0){
     //    for (int i = 0; i< this->numMessages; i++)
      //   {}
    // }
-}
+//}
 
 void State::read_from(char *mem){
     pageTitle = _get_int(mem,1);
@@ -155,7 +155,7 @@ int State::offset(string text) {
 
 
 void State::update(){
-
+if (_received_event()){
     //main page match buttons
     if(_event_id_is("button_", 3)){ //decline red button pressed
         //getYourAccount().add_blocked(getMatchAccount());
@@ -164,49 +164,63 @@ void State::update(){
         //if match presses the same button
         showPopUp = 1;
         popUpText = "You and Jake Matched!";
-        write_to(_global_mem);
+        //write_to(_global_mem);
     } else if(_event_id_is("button_", 1)){ //green friend button pressed
         //check match function call here
         //if match presses the same button
         showPopUp = 1;
         popUpText = "You and Jake Matched!";
-        write_to(_global_mem);
+        //write_to(_global_mem);
     }
     
     //Yes/No Button pop up 
     if(_event_id_is("button_", 5)){ //no button pressed
         showPopUp = 0;
         //getYourAccount().add_blocked(getMatchAccount());
-        write_to(_global_mem);
+        //write_to(_global_mem);
     }else if(_event_id_is("button_", 4)){ //yes button pressed
         showPopUp = 0;
         pageTitle = 2;
         getYourAccount().add_match(getMatchAccount());
-        write_to(_global_mem);
+       // write_to(_global_mem);
     }
 
     //chat inbox
-    if(getPageTitle() == 2 && _event_id_is("button_", 6)){
+    if(getPageTitle() == 2){
         numMessages += 1;
-        Message m(getYourAccount().get_email(), _get_tilde_terminated_string(_global_mem + offset("endOfMem")));
-        if(numMessages == 1){
-            messages = new Message*[numMessages];
+        /*Message m(getYourAccount().get_email(), _get_tilde_terminated_string(_global_mem + offset("endOfMem")));
+        if(state.getNumMessages() == 1){
+            messages = new Message*[state.getNumMessages()];
             messages[0] = &m;
             messages[0].set_email(getYourAccount().get_email());
             messages[0].set_message(_get_tilde_terminated_string(_global_mem + offset("endOfMem")));
         }else{
-            Message **tmp = new Message*[numMessages];
-            for(int i = 0; i<numMessages-2; i++){
+            Message **tmp = new Message*[state.getNumMessages()];
+            for(int i = 0; i<state.getNumMessages()-2; i++){
                 tmp[i] = messages[i];
             }
-            messages[numMessages-1] = &m;
+        messages[state.getNumMessages()-1] = &m;*/
+        _put_int(numMessages, _global_mem + 1000, 1);
+        _put_tilde_terminated_string(_get_tilde_terminated_string(_global_mem + 500), _global_mem + 1001);
         }
-    }if(getPageTitle() ==2 && _received_event()){
+    }//if(getPageTitle() ==2){
         
-    }
+   // }
 
-    
 }
+
+
+int State::offsetMessage(){
+    int offset = 0;
+    numMessages = _get_int(_global_mem + 1000, 1);
+    if(numMessages > 0){
+        for(int i = 0; i < numMessages; i++){
+            offset = _get_tilde_terminated_string(_global_mem + 1001 + offset).size();
+        }
+    }
+    return offset;
+}
+
 
 void display(State &state){
     string url1 = "https://img.buzzfeed.com/buzzfeed-static/static/2015-05/20/13/campaign_images/webdr01/what-your-favorite-stock-photo-spaghetti-person-s-2-7471-1432142821-2_dblbig.jpg";
@@ -231,12 +245,10 @@ void display(State &state){
     }*/
     if(state.getPageTitle() == 2){ //specific chat inbox
         _add_yaml("header.yaml",{{"picType", url2}, {"yourProfileLab", state.offset("name")}});
-        _add_yaml("chatbutton.yaml",{{"chatIndex", state.offset("endOfMem")}});
-        if(state.numMessages > 0){
-            _add_yaml("onechatbubble.yaml", {{"messageIndex", 500}});
-       
-        
-    }
+        _add_yaml("chatbutton.yaml",{{"chatIndex", 500}});
+        if(state.getNumMessages() > 0){
+            _add_yaml("onechatbubble.yaml", {{"messageIndex", state.offsetMessage()}});        
+        }
     }
 
 

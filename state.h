@@ -12,6 +12,8 @@ class State{
     int percentMatch, bioLength, nameLength, popUpTextLength, showPopUp, pageTitle;
     string popUpText;
 
+    int numMessages = 0;
+
 
     //labels text
     string yourProfileLab, bioLab, ageLab, matchPercentLab, popUpLab, yesLab, noLab, chatLab, helloLab;
@@ -22,14 +24,14 @@ class State{
     public:
     //messages
     Message **messages;
-    int numMessages = 0;
     Account &getMatchAccount() {return potmatch;}
     Account &getYourAccount() {return you;}
     int getShowPopUp() {return showPopUp;}
     int getPageTitle()  {return pageTitle;}
     int getPercentMatch()  {return percentMatch;}
+    int getNumMessages() {return numMessages;}
     int offset(string text);
-    int label_offset();
+    int offsetMessage();
     string getPopUpText(){return popUpText;}
     string getYourProfileLab() {return yourProfileLab;}
     string getBioLab() {return bioLab;}
