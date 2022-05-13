@@ -110,7 +110,7 @@
                         top: 4
                         left: 10
             - TextInput:
-                index: 165
+                index: 500
                 len: 40
                 style:
                   width: 260
