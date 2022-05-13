@@ -31,6 +31,7 @@ void State::read_lab(char *mem){
 
     helloLab = _get_tilde_terminated_string(mem);
     mem += 25;
+
 }
 //void State::read_messages(char *mem){
     //if(this->numMessages > 0){
@@ -40,6 +41,8 @@ void State::read_lab(char *mem){
 //}
 
 void State::read_from(char *mem){
+    numMessages = _get_int(mem + 1000, 1);
+
     pageTitle = _get_int(mem,1);
     mem += 1;
 
@@ -63,6 +66,8 @@ void State::read_from(char *mem){
 }
 
 void State::write_to(char *mem){
+    _put_int(0, mem+1000, 1);
+
     _put_int(pageTitle, mem, 1);
     mem += 1;
 
@@ -155,66 +160,66 @@ int State::offset(string text) {
 
 
 void State::update(){
-if (_received_event()){
-    //main page match buttons
-    if(_event_id_is("button_", 3)){ //decline red button pressed
-        //getYourAccount().add_blocked(getMatchAccount());
-    } else if(_event_id_is("button_", 2)) { //pink romance button pressed
-        //check match function call here
-        //if match presses the same button
-        showPopUp = 1;
-        popUpText = "You and Jake Matched!";
-        //write_to(_global_mem);
-    } else if(_event_id_is("button_", 1)){ //green friend button pressed
-        //check match function call here
-        //if match presses the same button
-        showPopUp = 1;
-        popUpText = "You and Jake Matched!";
-        //write_to(_global_mem);
-    }
-    
-    //Yes/No Button pop up 
-    if(_event_id_is("button_", 5)){ //no button pressed
-        showPopUp = 0;
-        //getYourAccount().add_blocked(getMatchAccount());
-        //write_to(_global_mem);
-    }else if(_event_id_is("button_", 4)){ //yes button pressed
-        showPopUp = 0;
-        pageTitle = 2;
-        getYourAccount().add_match(getMatchAccount());
-       // write_to(_global_mem);
-    }
-
-    //chat inbox
-    /*if(getPageTitle() == 2){
-        numMessages += 1;
-        /*Message m(getYourAccount().get_email(), _get_tilde_terminated_string(_global_mem + offset("endOfMem")));
-        if(state.getNumMessages() == 1){
-            messages = new Message*[state.getNumMessages()];
-            messages[0] = &m;
-            messages[0].set_email(getYourAccount().get_email());
-            messages[0].set_message(_get_tilde_terminated_string(_global_mem + offset("endOfMem")));
-        }else{
-            Message **tmp = new Message*[state.getNumMessages()];
-            for(int i = 0; i<state.getNumMessages()-2; i++){
-                tmp[i] = messages[i];
-            }
-        messages[state.getNumMessages()-1] = &m;
-        _put_int(numMessages, _global_mem + 1000, 1);
-        _put_tilde_terminated_string(_get_tilde_terminated_string(_global_mem + 500), _global_mem + 1001);
+    if (_received_event()){
+        //main page match buttons
+        if(_event_id_is("button_", 3)){ //decline red button pressed
+            //getYourAccount().add_blocked(getMatchAccount());
+        } else if(_event_id_is("button_", 2)) { //pink romance button pressed
+            //check match function call here
+            //if match presses the same button
+            showPopUp = 1;
+            popUpText = "You and Jake Matched!";
+            //write_to(_global_mem);
+        } else if(_event_id_is("button_", 1)){ //green friend button pressed
+            //check match function call here
+            //if match presses the same button
+            showPopUp = 1;
+            popUpText = "You and Jake Matched!";
+            //write_to(_global_mem);
         }
-    }*/
 
+        //Yes/No Button pop up 
+        if(_event_id_is("button_", 5)){ //no button pressed
+            showPopUp = 0;
+            //getYourAccount().add_blocked(getMatchAccount());
+            //write_to(_global_mem);
+        }else if(_event_id_is("button_", 4)){ //yes button pressed
+            showPopUp = 0;
+            pageTitle = 2;
+            getYourAccount().add_match(getMatchAccount());
+            // write_to(_global_mem);
+        }
+
+        //chat inbox
+        if(getPageTitle() == 2){
+            numMessages += 1;
+            _put_int(numMessages, _global_mem + 1000, 1);
+            _put_tilde_terminated_string(_get_tilde_terminated_string(_global_mem + 500), _global_mem + 1001 + offsetMessage());
+             /*Message m(getYourAccount().get_email(), _get_tilde_terminated_string(_global_mem + offset("endOfMem")));
+            if(state.getNumMessages() == 1){
+                messages = new Message*[state.getNumMessages()];
+                messages[0] = &m;
+                messages[0].set_email(getYourAccount().get_email());
+                messages[0].set_message(_get_tilde_terminated_string(_global_mem + offset("endOfMem")));
+            }else{
+                Message **tmp = new Message*[state.getNumMessages()];
+                for(int i = 0; i<state.getNumMessages()-2; i++){
+                    tmp[i] = messages[i];
+                }
+            messages[state.getNumMessages()-1] = &m;*/
+        }
     }
 }
 
 
 int State::offsetMessage(){
-    int offset = 1001;
+    string temp;
+    int offset = 0;
     numMessages = _get_int(_global_mem + 1000, 1);
     if(numMessages > 0){
         for(int i = 0; i < numMessages; i++){
-            offset += _get_tilde_terminated_string(_global_mem + 1001 + offset).size();
+            temp = _get_tilde_terminated_string(_global_mem + 1001 + offset);
+            offset += temp.size();
         }
     }
     return offset;
@@ -244,10 +249,12 @@ void display(State &state){
     }*/
     if(state.getPageTitle() == 2){ //specific chat inbox
         _add_yaml("header.yaml",{{"picType", url2}, {"yourProfileLab", state.offset("name")}});
-        _add_yaml("chatbutton.yaml",{{"chatIndex", 500}});
         if(state.getNumMessages() > 0){
-            _add_yaml("onechatbubble.yaml", {{"messageIndex", state.offsetMessage()}});        
+            for(int i =0; i< state.getNumMessages(); i++){
+                _add_yaml("onechatbubble.yaml", {{"messageIndex", state.offsetMessage()}}); 
+            }       
         }
+        _add_yaml("chatbutton.yaml",{{"chatIndex", 500}});
     }
 
 

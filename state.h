@@ -11,8 +11,8 @@ class State{
     Account you, potmatch;
     int percentMatch, bioLength, nameLength, popUpTextLength, showPopUp, pageTitle;
     string popUpText;
-
-    int numMessages = 0;
+ 
+    int numMessages;
 
 
     //labels text

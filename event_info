@@ -1,11 +1,11 @@
-- message_id: 3
+- message_id: 2
 - event_info:
     type: touch_up
-    start_x: 254
-    start_y: 315
-    point_x: 254
-    point_y: 315
+    start_x: 111
+    start_y: 301
+    point_x: 111
+    point_y: 301
     nodes:
-      - Button_29
-    id: button_5
+      - Button_28
+    id: button_4
 - first_name: 'Grace'

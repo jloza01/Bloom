@@ -2,6 +2,9 @@
           style:
             width: 320
             height: 35
+            position: absolute
+            bottom: -50
+            left: 0
             backgroundColor: white
             borderTopWidth: 1
             borderBottomColor: rgb(190, 190, 190)
