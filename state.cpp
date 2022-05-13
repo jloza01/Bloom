@@ -186,7 +186,7 @@ if (_received_event()){
     }
 
     //chat inbox
-    if(getPageTitle() == 2){
+    /*if(getPageTitle() == 2){
         numMessages += 1;
         /*Message m(getYourAccount().get_email(), _get_tilde_terminated_string(_global_mem + offset("endOfMem")));
         if(state.getNumMessages() == 1){
@@ -199,23 +199,22 @@ if (_received_event()){
             for(int i = 0; i<state.getNumMessages()-2; i++){
                 tmp[i] = messages[i];
             }
-        messages[state.getNumMessages()-1] = &m;*/
+        messages[state.getNumMessages()-1] = &m;
         _put_int(numMessages, _global_mem + 1000, 1);
         _put_tilde_terminated_string(_get_tilde_terminated_string(_global_mem + 500), _global_mem + 1001);
         }
-    }//if(getPageTitle() ==2){
-        
-   // }
+    }*/
 
+    }
 }
 
 
 int State::offsetMessage(){
-    int offset = 0;
+    int offset = 1001;
     numMessages = _get_int(_global_mem + 1000, 1);
     if(numMessages > 0){
         for(int i = 0; i < numMessages; i++){
-            offset = _get_tilde_terminated_string(_global_mem + 1001 + offset).size();
+            offset += _get_tilde_terminated_string(_global_mem + 1001 + offset).size();
         }
     }
     return offset;
