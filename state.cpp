@@ -192,8 +192,8 @@ void State::update(){
         if(numMessages == 1){
             messages = new Message*[numMessages];
             messages[0] = &m;
-            /*messages[0].set_email(getYourAccount().get_email());
-            messages[0].set_message(_get_tilde_terminated_string(_global_mem + offset("endOfMem")));*/
+            messages[0].set_email(getYourAccount().get_email());
+            messages[0].set_message(_get_tilde_terminated_string(_global_mem + offset("endOfMem")));
         }else{
             Message **tmp = new Message*[numMessages];
             for(int i = 0; i<numMessages-2; i++){
