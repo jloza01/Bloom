@@ -41,7 +41,8 @@ void State::read_lab(char *mem){
 //}
 
 void State::read_from(char *mem){
-    numMessages = _get_int(mem + 1000, 1);
+    numMessages = _get_int(mem + 1000, 2);
+    nextMessageInd = _get_int(mem+995, 4);
 
     pageTitle = _get_int(mem,1);
     mem += 1;
@@ -66,7 +67,8 @@ void State::read_from(char *mem){
 }
 
 void State::write_to(char *mem){
-    _put_int(0, mem+1000, 1);
+    _put_int(getNumMessages(), mem+1000, 2);
+    _put_int(getNextMessageIndex(), mem+995, 4);
 
     _put_int(pageTitle, mem, 1);
     mem += 1;
@@ -116,13 +118,13 @@ void State::write_to(char *mem){
     _put_tilde_terminated_string(helloLab, mem);
     mem += 25;
 
-    if(this->numMessages > 0){
+    /*if(this->numMessages > 0){
         mem += 338;
         for (int i = 0; i< this->numMessages; i++){
             _put_tilde_terminated_string((*messages[i]).get_message(), mem);
             mem += ((*messages[i]).get_message().size());
         }
-    }
+    }*/
 }
 
 int State::offset(string text) {
@@ -192,10 +194,14 @@ void State::update(){
 
         //chat inbox
         if(getPageTitle() == 2){
-            numMessages += 1;
-            _put_int(numMessages, _global_mem + 1000, 1);
-            _put_tilde_terminated_string(_get_tilde_terminated_string(_global_mem + 500), _global_mem + 1001 + offsetMessage());
-             /*Message m(getYourAccount().get_email(), _get_tilde_terminated_string(_global_mem + offset("endOfMem")));
+            
+           // _put_int(numMessages, _global_mem + 1000, 2);
+            _put_tilde_terminated_string(_get_tilde_terminated_string(_global_mem + 500)., _global_mem + 1002 + offsetMessage(numMessages));
+            numMessages += 1; 
+            //_put_tilde_terminated_string("~a~",_global_mem + offsetMessage(numMessages)+1002);
+            //_put_int(nextMessageInd, _global_mem + 1003 + offsetMessage(), 2)
+            
+            /*Message m(getYourAccount().get_email(), _get_tilde_terminated_string(_global_mem + offset("endOfMem")));
             if(state.getNumMessages() == 1){
                 messages = new Message*[state.getNumMessages()];
                 messages[0] = &m;
@@ -212,16 +218,16 @@ void State::update(){
 }
 
 
-int State::offsetMessage(){
+int State::offsetMessage(int ind){
     string temp;
     int offset = 0;
-    numMessages = _get_int(_global_mem + 1000, 1);
-    if(numMessages > 0){
-        for(int i = 0; i < numMessages; i++){
-            temp = _get_tilde_terminated_string(_global_mem + 1001 + offset);
+    if(numMessages > 1){
+        for(int i = 1; i < ind; i++){
+            temp = _get_tilde_terminated_string(_global_mem + 1002+ offset);
             offset += temp.size();
         }
     }
+    nextMessageInd = offset;
     return offset;
 }
 
@@ -249,9 +255,10 @@ void display(State &state){
     }*/
     if(state.getPageTitle() == 2){ //specific chat inbox
         _add_yaml("header.yaml",{{"picType", url2}, {"yourProfileLab", state.offset("name")}});
-        if(state.getNumMessages() > 0){
-            for(int i =0; i< state.getNumMessages(); i++){
-                _add_yaml("onechatbubble.yaml", {{"messageIndex", state.offsetMessage()}}); 
+        
+        if(state.getNumMessages() > 1){
+            for(int i =1; i< state.getNumMessages(); i++){
+                _add_yaml("onechatbubble.yaml", {{"messageIndex", state.offsetMessage(i)+1002}}); 
             }       
         }
         _add_yaml("chatbutton.yaml",{{"chatIndex", 500}});

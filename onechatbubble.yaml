@@ -20,6 +20,4 @@
                   position: absolute
                   top: 10
                   left: 15
-                extra_props:
-                  placeholder: 'hi'
-                  placeholderTextColor: grey 
+                index: {messageIndex}

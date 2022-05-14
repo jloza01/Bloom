@@ -20,7 +20,7 @@ int main() {
   state.read_lab(_global_mem + state.offset("labelStart"));
  
 
-  cout<<_global_mem[500]<< "line 27"<<endl;
+  
   state.update(); // event handling
   cout << state.getNumMessages() << endl;
   display(state); // display logic

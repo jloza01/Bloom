@@ -9,10 +9,10 @@ using namespace std;
 class State{
     //match match;
     Account you, potmatch;
-    int percentMatch, bioLength, nameLength, popUpTextLength, showPopUp, pageTitle;
+    int percentMatch, bioLength, nameLength, popUpTextLength, showPopUp, pageTitle, numMessages=0; int nextMessageInd;
     string popUpText;
  
-    int numMessages;
+    
 
 
     //labels text
@@ -30,8 +30,9 @@ class State{
     int getPageTitle()  {return pageTitle;}
     int getPercentMatch()  {return percentMatch;}
     int getNumMessages() {return numMessages;}
+    int getNextMessageIndex(){return nextMessageInd;}
     int offset(string text);
-    int offsetMessage();
+    int offsetMessage(int ind);
     string getPopUpText(){return popUpText;}
     string getYourProfileLab() {return yourProfileLab;}
     string getBioLab() {return bioLab;}
