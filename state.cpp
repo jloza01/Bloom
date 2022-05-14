@@ -196,7 +196,7 @@ void State::update(){
         if(getPageTitle() == 2){
             
            // _put_int(numMessages, _global_mem + 1000, 2);
-            _put_tilde_terminated_string(_get_tilde_terminated_string(_global_mem + 500)., _global_mem + 1002 + offsetMessage(numMessages));
+            _put_tilde_terminated_string(_get_tilde_terminated_string(_global_mem + 500), _global_mem + 1002 + offsetMessage(numMessages));
             numMessages += 1; 
             //_put_tilde_terminated_string("~a~",_global_mem + offsetMessage(numMessages)+1002);
             //_put_int(nextMessageInd, _global_mem + 1003 + offsetMessage(), 2)
@@ -224,7 +224,7 @@ int State::offsetMessage(int ind){
     if(numMessages > 1){
         for(int i = 1; i < ind; i++){
             temp = _get_tilde_terminated_string(_global_mem + 1002+ offset);
-            offset += temp.size();
+            offset += temp.size()+1;
         }
     }
     nextMessageInd = offset;
