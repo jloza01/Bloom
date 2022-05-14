@@ -193,7 +193,7 @@ void State::update(){
         }
 
         //chat inbox
-        if(getPageTitle() == 2){
+        if(getPageTitle() == 2 && !(_event_id_is("button_", 7))){
             
            // _put_int(numMessages, _global_mem + 1000, 2);
             _put_tilde_terminated_string(_get_tilde_terminated_string(_global_mem + 500), _global_mem + 1002 + offsetMessage(numMessages));
@@ -213,6 +213,12 @@ void State::update(){
                     tmp[i] = messages[i];
                 }
             messages[state.getNumMessages()-1] = &m;*/
+        }
+        if (getPageTitle() == 2 && _event_id_is("button_", 7)){
+            pageTitle = 1;
+        }
+        if (getPageTitle()== 1 && _event_id_is("button_", 9)){
+            pageTitle = 2;
         }
     }
 }
@@ -244,15 +250,15 @@ void display(State &state){
             _add_yaml("YNPopUp.yaml", {{"popUpIndex", state.offset("popUpText")}, {"popUpLab", state.offset("popUpLab")}, {"yesIndex", state.offset("yesLab")}, {"noIndex", state.offset("noLab")}});
         }
     }
-    /*if (state.getPageTitle() == 1){ // chat inbox if statements
-        _add_yaml("chatpagehome.yaml",{{"yourPic", url1}, {"chat", 2}});
+    if (state.getPageTitle() == 1){ // chat inbox if statements
+        _add_yaml("chatpagehome.yaml",{{"yourPic", url1}, {"chat", state.offset("chatLab")}});
         int matches = state.getYourAccount().get_numMatches();
         state.getYourAccount().update_numMatches();
-        cout<<state.getYourAccount().get_numMatches();
+        
         //for (int i = 0; i<matches; i++){
-        _add_yaml("addChat.yaml", {{"matchPic", url2},{"chatlab", 7},{"nameInd",29}});//eventually would have to add picture and name 
+        _add_yaml("addChat.yaml", {{"matchPic", url2},{"nameInd", state.offset("name")},{"helloLab", state.offset("helloLab")}});//eventually would have to add picture and name 
         //}
-    }*/
+    }
     if(state.getPageTitle() == 2){ //specific chat inbox
         _add_yaml("header.yaml",{{"picType", url2}, {"yourProfileLab", state.offset("name")}});
         

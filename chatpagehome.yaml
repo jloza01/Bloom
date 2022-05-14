@@ -1,46 +1,20 @@
-- ScrollView:
+- View:
     style:
       width: 320
-      backgroundColor: white
+      height: 60
+      backgroundColor: rgb(174, 186, 255)
     children:
-      - View:
+      - Button:
+          id: button_8
           style:
-            width: 500
-            height: 60
-            backgroundColor: rgb(174, 186, 255)
-          children:
-            - Button:
-                style:
-                  width: 0
-                  height: 0
-                  borderLeftWidth: 20
-                  borderRightWidth: 0
-                  borderBottomWidth: 25
-                  borderStyle: 'solid'
-                  backgroundColor: transparent
-                  borderBottomColor: white
-                  borderLeftColor: transparent
-                  borderRightColor: transparent
-                  position: absolute
-                  top: 5
-                  left: 3
-                children:
-                  - Button:
-                      style:
-                        width: 0
-                        height: 0
-                        borderLeftWidth: 0
-                        borderRightWidth: 20
-                        borderBottomWidth: 25
-                        borderStyle: 'solid'
-                        backgroundColor: transparent
-                        borderBottomColor: transparent
-                        borderLeftColor: transparent
-                        borderRightColor: white
-                        position: absolute
-                        top: 25
-                        left: -20
-            - Image:
+            width: 50
+            height: 50
+            borderRadius: 100
+            backgroundColor: white
+            position: absolute
+            top: 5
+            left: 3
+      - Image:
                 source: {yourPic}
                 style:
                   width: 50
@@ -52,7 +26,7 @@
                   position: absolute
                   top: 5
                   left: 245
-            - Text:
+      - Text:
                 style:
                   color: white
                   fontSize: 40
@@ -60,7 +34,7 @@
                   top: 5
                   left: 90
                 index: {chat}
-            - View:
+      - View:
                 style:
                   width: 10
                   height: 10

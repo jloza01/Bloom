@@ -1,8 +1,11 @@
-- message_id: 3
+- message_id: 6
 - event_info:
-    type: text_event
+    type: touch_up
+    start_x: 283
+    start_y: 85
+    point_x: 283
+    point_y: 85
     nodes:
-      - TextInput_12
+      - Button_7
     id: !<tag:yaml.org,2002:js/undefined> ''
-    index: 500
 - first_name: 'Jc'
