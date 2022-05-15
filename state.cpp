@@ -214,10 +214,13 @@ void State::update(){
                 }
             messages[state.getNumMessages()-1] = &m;*/
         }
-        if (getPageTitle() == 2 && _event_id_is("button_", 7)){
+        if (getPageTitle() == 2 && _event_id_is("button_", 7)){ //back button for in the chat
             pageTitle = 1;
         }
-        if (getPageTitle()== 1 && _event_id_is("button_", 9)){
+        if(getPageTitle() == 1 && _event_id_is("button_", 8)){ //back button for in the inbox
+            pageTitle = 0;
+        }
+        if (getPageTitle()== 1 && _event_id_is("button_", 9)){ //button for clicking on the specific chat in the inbox
             pageTitle = 2;
         }
     }
@@ -242,7 +245,7 @@ void display(State &state){
     string url1 = "https://img.buzzfeed.com/buzzfeed-static/static/2015-05/20/13/campaign_images/webdr01/what-your-favorite-stock-photo-spaghetti-person-s-2-7471-1432142821-2_dblbig.jpg";
     string url2 = "https://previews.123rf.com/images/kurhan/kurhan1103/kurhan110300100/9050894-hombre-feliz.jpg";
 
-    if(state.getPageTitle() == 0){
+    if(state.getPageTitle() == 0){ //main page
         _add_yaml("header.yaml",{{"picType", url1}, {"yourProfileLab", state.offset("labelStart")}});
         _add_yaml("mainPageBody.yaml", {{"othersPic", url2}, {"nameIndex", state.offset("name")}, {"bioIndex", state.offset("bio")}, {"bioLab", state.offset("bioLab")}, {"ageLab", state.offset("ageLab")}, {"matchPercentLab", state.offset("matchPercentLab")}});
         _add_yaml("matchButtons.yaml");
