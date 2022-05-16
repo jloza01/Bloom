@@ -1,11 +1,2 @@
-- message_id: 6
-- event_info:
-    type: touch_up
-    start_x: 283
-    start_y: 85
-    point_x: 283
-    point_y: 85
-    nodes:
-      - Button_7
-    id: !<tag:yaml.org,2002:js/undefined> ''
+- message_id: 0
 - first_name: 'Jc'
