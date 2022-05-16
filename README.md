@@ -4,6 +4,8 @@ Bloom is a friend finding/dating app. This app is unique from others like it sin
 
 How to compile without using the make file:
 
+Make sure that the browser is in the half screen mode in order for the elements to all be in the correct position (if you are on pc)!!!!!!
+
 compile the three .cpp files needed:
 	g++ -Wall -c bloom.cpp
     g++ -Wall -c state.cpp
